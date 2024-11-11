@@ -1,0 +1,67 @@
+form {
+	display: flex;
+
+	.time {
+		width: 5rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 1.5rem;
+		font-weight: 350;
+		color: var(--lighterFont);
+	}
+
+	.bloodSugarDiv {
+		width: 10rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.6rem;
+		margin-top: 1.5rem;
+		font-size: 0.8rem;
+
+		input {
+			width: 2.5rem;
+			padding: 0.2rem;
+			border-radius: 10px;
+			border: 1px solid var(--boxesStroke);
+			text-align: center;
+			background-color: var(--inputBackground);
+			color: var(--font);
+		}
+
+		span {
+			color: var(--lighterFont);
+		}
+	}
+	.physicalActivityDiv {
+		width: 10rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 1.5rem;
+
+		input {
+			border: 1px solid var(--font);
+			filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+			cursor: pointer;
+		}
+	}
+	.submitDiv {
+		width: 6rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 1.5rem;
+
+		button {
+			border: none;
+			color: var(--bolusText);
+			background-color: var(--bolusLight);
+			width: 3.7rem;
+			height: 1.7rem;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+	}
+}

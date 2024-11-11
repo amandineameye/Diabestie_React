@@ -1,0 +1,44 @@
+.row {
+	display: flex;
+	justify-content: space-between;
+	gap: 1.5rem;
+
+	.cell {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.7rem;
+
+		p {
+			font-size: 0.9rem;
+			color: var(--lighterFont);
+			font-weight: 300;
+		}
+
+		p:nth-of-type(2) {
+			height: 2rem;
+			width: 2rem;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			border-radius: 50%;
+
+			&.bolus {
+				background-color: var(--bolusLight);
+				color: var(--bolusText);
+			}
+
+			&.carbs {
+				background-color: var(--carbsLight);
+				color: var(--carbsText);
+			}
+
+			&.change {
+				background-color: var(--changeLight);
+				color: var(--font);
+			}
+		}
+	}
+}

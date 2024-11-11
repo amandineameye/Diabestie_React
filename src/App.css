@@ -1,0 +1,32 @@
+:root {
+	--background: #ced9ec;
+	--font: #3e4356;
+	--lighterFont: #646877;
+	--boxes: #fdfdfd;
+	--boxesStroke: #e2e2e2;
+	--bolusText: #0c8b99;
+	--bolusLight: #d9ecee;
+	--carbsText: #dd3b59;
+	--carbsLight: #f8e0e4;
+	--changeLight: #d5dcea;
+	--navbarItem: #f16b84;
+	--navbarItemHover: #f16b8450;
+	--postIt: #eceff4;
+	--inputBackground: #f8fafc;
+}
+
+body {
+	min-height: 100vh;
+	width: 100vw;
+	background-color: var(--background);
+	font-family: "Roboto", sans-serif;
+	font-weight: 300;
+	color: var(--font);
+	margin: 0;
+}
+
+#root {
+	margin: 0;
+	padding: 0;
+	display: flex;
+}

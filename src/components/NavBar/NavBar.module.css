@@ -1,0 +1,74 @@
+nav {
+	background-color: var(--boxes);
+	display: flex;
+	flex-direction: column;
+	margin: 1.9rem;
+	align-items: center;
+	border-radius: 10px;
+	font-size: 1.1rem;
+	height: calc(100vh - 2 * 1.9rem);
+	width: 19vw;
+
+	.navTitle {
+		display: flex;
+		font-size: 1.6rem;
+		font-weight: 400;
+		align-items: center;
+		margin: 2.5rem;
+		margin-right: 3.5rem;
+
+		.logoIcon {
+			height: 1.5rem;
+			margin-right: 0.7rem;
+		}
+	}
+
+	.linksList {
+		list-style: none;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		color: var(--lighterFont);
+
+		span {
+			margin-right: 1.2rem;
+		}
+
+		li {
+			padding: 1.2rem 1.5rem;
+			width: 100%;
+			border-radius: 28px;
+
+			&:hover {
+				background-color: var(--navbarItemHover);
+			}
+
+			&.active {
+				color: var(--boxes);
+				background-color: var(--navbarItem);
+			}
+		}
+	}
+
+	.account {
+		width: 100%;
+		margin-top: auto;
+		margin-bottom: 0;
+		display: flex;
+		border-top: solid 1px var(--boxesStroke);
+		justify-content: center;
+		align-items: center;
+		padding: 1.5rem;
+		font-size: 1rem;
+
+		.logOutIcon {
+			height: 1.2rem;
+			margin-left: 1rem;
+		}
+
+		.userIcon {
+			margin-right: 0.9rem;
+		}
+	}
+}
