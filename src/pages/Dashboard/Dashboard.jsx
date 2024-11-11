@@ -3,13 +3,14 @@ import NavBar from "../../components/NavBar/NavBar";
 import GreetingsAndDate from "../../containers/GreetingsAndDate/GreetingsAndDate";
 import IncompleteMeals from "../../containers/IncompleteMeals/IncompleteMeals";
 import MealBCC from "../../components/MealBCC/MealBCC";
+import DeleteButton from "../../components/DeleteButton/DeleteButton";
 
 const QuickNote = () => {
 	return (
 		<div className={style.note}>
 			<h2>Quick note</h2>
 			<textarea name="postIt" id="postIt" className={style.postIt}></textarea>
-			<button className={style.deleteButton}>🗑️</button>
+			<DeleteButton page="dashboard" />
 		</div>
 	);
 };

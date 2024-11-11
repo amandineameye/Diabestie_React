@@ -1,0 +1,19 @@
+.deleteButton {
+	height: 2rem;
+	width: 2rem;
+
+	background-color: var(--carbsLight);
+	border: none;
+	border-radius: 50%;
+
+	cursor: pointer;
+}
+
+.postItDeleteButton {
+	position: absolute;
+	right: 1rem;
+	bottom: 1rem;
+}
+
+.newCarbDeleteButton {
+}

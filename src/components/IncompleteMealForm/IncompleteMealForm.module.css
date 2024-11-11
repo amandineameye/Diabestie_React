@@ -1,23 +1,23 @@
 form {
 	display: flex;
+	margin-top: 1.5rem;
 
 	.time {
-		width: 5rem;
+		width: 15%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin-top: 1.5rem;
+
 		font-weight: 350;
 		color: var(--lighterFont);
 	}
 
 	.bloodSugarDiv {
-		width: 10rem;
+		width: 35%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		gap: 0.6rem;
-		margin-top: 1.5rem;
 		font-size: 0.8rem;
 
 		input {
@@ -35,11 +35,10 @@ form {
 		}
 	}
 	.physicalActivityDiv {
-		width: 10rem;
+		width: 35%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin-top: 1.5rem;
 
 		input {
 			border: 1px solid var(--font);
@@ -48,11 +47,10 @@ form {
 		}
 	}
 	.submitDiv {
-		width: 6rem;
+		width: 15%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin-top: 1.5rem;
 
 		button {
 			border: none;

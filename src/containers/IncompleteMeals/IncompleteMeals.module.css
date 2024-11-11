@@ -12,35 +12,45 @@
 	border-radius: 10px;
 
 	.fakeTable {
+		width: 100%;
+		height: calc(100% - 4.3rem);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 		.fakeTableHead {
 			display: flex;
+			width: 80%;
 			p {
 				border-bottom: 1px solid var(--boxesStroke);
-				padding-bottom: 1rem;
+				padding: 1rem 0;
 				font-size: 0.9rem;
 				font-weight: 300;
 				color: var(--lighterFont);
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				margin-top: 1rem;
 
 				&:nth-of-type(1) {
-					width: 5rem;
+					width: 15%;
 				}
 
 				&:nth-of-type(2) {
-					width: 10rem;
+					width: 35%;
 				}
 
 				&:nth-of-type(3) {
-					width: 10rem;
+					width: 35%;
 				}
 
 				&:nth-of-type(4) {
-					width: 6rem;
+					width: 15%;
 				}
 			}
+		}
+		.fakeTableContent {
+			margin-bottom: 2.9rem;
+			width: 80%;
 		}
 	}
 }

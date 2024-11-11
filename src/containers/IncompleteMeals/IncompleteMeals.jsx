@@ -18,9 +18,11 @@ const IncompleteMeals = () => {
 			<h2>Incomplete meals</h2>
 			<div className={style.fakeTable}>
 				<FakeTableHead />
-				<IncompleteMealForm />
-				<IncompleteMealForm />
-				<IncompleteMealForm />
+				<div className={style.fakeTableContent}>
+					<IncompleteMealForm />
+					<IncompleteMealForm />
+					<IncompleteMealForm />
+				</div>
 			</div>
 		</div>
 	);
