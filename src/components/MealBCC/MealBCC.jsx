@@ -1,8 +1,18 @@
 import style from "./MealBCC.module.css";
 
-const MealBCC = () => {
+const MealBCC = ({ page }) => {
 	return (
-		<div className={style.row}>
+		<div
+			className={`${style.row} ${
+				page === "dashboard"
+					? style.dashboardRow
+					: page === "addMeal2"
+					? style.addMeal2Row
+					: page === "history"
+					? style.historyRow
+					: ""
+			}`}
+		>
 			<div className={style.cell}>
 				<p>Bolus</p>
 				<p className={style.bolus}>6</p>
@@ -15,6 +25,13 @@ const MealBCC = () => {
 				<p>Change</p>
 				<p className={style.change}>-30</p>
 			</div>
+			{page === "history" && (
+				<div className={style.tagsDiv}>
+					<div>☕️</div>
+					<div>🍩</div>
+					<div>⛹🏽‍♂️</div>
+				</div>
+			)}
 		</div>
 	);
 };

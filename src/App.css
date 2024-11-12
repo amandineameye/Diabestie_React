@@ -13,6 +13,8 @@
 	--navbarItemHover: #f16b8450;
 	--postIt: #eceff4;
 	--inputBackground: #f8fafc;
+
+	--dropShadow: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.15));
 }
 
 body {
@@ -40,4 +42,9 @@ main {
 
 	display: flex;
 	flex-direction: column;
+}
+
+h1 {
+	font-size: 2rem;
+	font-weight: 400;
 }

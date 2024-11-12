@@ -1,6 +1,7 @@
 import style from "./AddMeal1.module.css";
 import NavBar from "../../components/NavBar/NavBar";
 import DeleteButton from "../../components/DeleteButton/DeleteButton";
+import { Link } from "react-router-dom";
 
 const SearchBar = () => {
 	return (
@@ -33,7 +34,7 @@ const AddMeal1 = () => {
 			<main>
 				<div className={style.contentDiv}>
 					<div className={style.titlesDiv}>
-						<h1>What carbs are you eating ?</h1>
+						<h1>What carbs are you eating?</h1>
 						<h2>Add their quantity</h2>
 					</div>
 					<SearchBar />
@@ -44,7 +45,9 @@ const AddMeal1 = () => {
 						<NewCarb />
 						<NewCarb />
 					</div>
-					<button className={style.nextButton}>Next</button>
+					<Link to="/addMeal/step2">
+						<button className={style.nextButton}>Next</button>
+					</Link>
 				</div>
 			</main>
 		</>

@@ -34,7 +34,7 @@
 			outline: none;
 			height: 2rem;
 			width: 13rem;
-			margin: 0 0.3rem 0 0.5rem;
+			margin: 0 0.3rem 0 0rem;
 			text-align: center;
 		}
 	}
@@ -53,6 +53,7 @@
 			height: calc((100% - 1.9rem) / 2);
 			background-color: var(--boxes);
 			border-radius: 10px;
+			filter: var(--dropShadow);
 
 			.cardHeader {
 				display: flex;
@@ -105,5 +106,6 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		cursor: pointer;
 	}
 }
