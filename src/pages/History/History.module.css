@@ -6,9 +6,6 @@
 	align-items: center;
 	justify-content: space-evenly;
 
-	h1 {
-	}
-
 	.filtersDiv {
 		.selectsDiv {
 			display: flex;
