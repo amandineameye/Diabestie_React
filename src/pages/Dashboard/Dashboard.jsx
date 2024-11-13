@@ -1,5 +1,4 @@
 import style from "./Dashboard.module.css";
-import NavBar from "../../components/NavBar/NavBar";
 import GreetingsAndDate from "../../containers/GreetingsAndDate/GreetingsAndDate";
 import IncompleteMeals from "../../containers/IncompleteMeals/IncompleteMeals";
 import MealBCC from "../../components/MealBCC/MealBCC";
@@ -32,29 +31,21 @@ const MostRecentMeals = () => {
 	);
 };
 
-const Content = () => {
-	return (
-		<div className={style.content}>
-			<div className={style.leftContent}>
-				<IncompleteMeals />
-				<QuickNote />
-			</div>
-			<div className={style.rightContent}>
-				<MostRecentMeals />
-			</div>
-		</div>
-	);
-};
 
 const Dashboard = () => {
 	return (
-		<>
-			<NavBar page="dashboard" />
 			<main>
 				<GreetingsAndDate />
-				<Content />
+				<div className={style.content}>
+					<div className={style.leftContent}>
+						<IncompleteMeals />
+						<QuickNote />
+					</div>
+					<div className={style.rightContent}>
+						<MostRecentMeals />
+					</div>
+				</div>
 			</main>
-		</>
 	);
 };
 

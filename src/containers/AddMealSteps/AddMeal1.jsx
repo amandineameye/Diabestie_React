@@ -1,5 +1,4 @@
 import style from "./AddMeal1.module.css";
-import NavBar from "../../components/NavBar/NavBar";
 import DeleteButton from "../../components/DeleteButton/DeleteButton";
 import { Link } from "react-router-dom";
 
@@ -27,11 +26,8 @@ const NewCarb = () => {
 		</div>
 	);
 };
-const AddMeal1 = () => {
+const AddMeal1 = ({onClickNext}) => {
 	return (
-		<>
-			<NavBar page="addMeal1" />
-			<main>
 				<div className={style.contentDiv}>
 					<div className={style.titlesDiv}>
 						<h1>What carbs are you eating?</h1>
@@ -45,12 +41,10 @@ const AddMeal1 = () => {
 						<NewCarb />
 						<NewCarb />
 					</div>
-					<Link to="/addMeal/step2">
-						<button className={style.nextButton}>Next</button>
-					</Link>
+					
+						<button className={style.nextButton} onClick={onClickNext}>Next</button>
+					
 				</div>
-			</main>
-		</>
 	);
 };
 

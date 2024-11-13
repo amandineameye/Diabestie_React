@@ -1,3 +1,4 @@
+import { CoffeeIcon } from "../Icons/Icons";
 import style from "./MealBCC.module.css";
 
 const MealBCC = ({ page }) => {
@@ -25,9 +26,9 @@ const MealBCC = ({ page }) => {
 				<p>Change</p>
 				<p className={style.change}>-30</p>
 			</div>
-			{page === "history" && (
+			{(page === "history" || page === "addMeal2") && (
 				<div className={style.tagsDiv}>
-					<div>☕️</div>
+					<CoffeeIcon />
 					<div>🍩</div>
 					<div>⛹🏽‍♂️</div>
 				</div>

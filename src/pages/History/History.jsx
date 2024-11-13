@@ -1,5 +1,4 @@
 import style from "./History.module.css";
-import NavBar from "../../components/NavBar/NavBar";
 import MealBCC from "../../components/MealBCC/MealBCC";
 
 let page = "history";
@@ -57,8 +56,6 @@ const MealsDiv = () => {
 
 const History = () => {
 	return (
-		<>
-			<NavBar page="history" />
 			<main>
 				<div className={style.mainContentDiv}>
 					<h1>History of meals</h1>
@@ -70,7 +67,6 @@ const History = () => {
 					<button className={style.viewMoreButton}>View more</button>
 				</div>
 			</main>
-		</>
 	);
 };
 

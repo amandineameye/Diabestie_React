@@ -47,7 +47,35 @@
 }
 
 .addMeal2Row {
-}
+	justify-content: space-around;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	border-radius: 10px;
+	position: relative;
+
+
+	.tagsDiv {
+		height: 100%;
+		width: 2rem;
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 0.2rem;
+		right: -1rem;
+
+		div {
+			height: 1.7rem;
+			width: 1.7rem;
+			background-color: var(--boxes);
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border: 1px solid var(--lighterFont);
+		}
+}}
 
 .historyRow {
 	gap: 3.3rem;

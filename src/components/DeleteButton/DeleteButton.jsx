@@ -1,8 +1,9 @@
 import style from "./DeleteButton.module.css";
 
-const DeleteButton = ({ page }) => {
+const DeleteButton = ({ page, onDeleteAction = () => {} }) => {
 	return (
 		<button
+			onClick={onDeleteAction}
 			className={`${style.deleteButton} ${
 				page === "dashboard"
 					? style.postItDeleteButton

@@ -4,6 +4,7 @@ import IncompleteMealForm from "../../components/IncompleteMealForm/IncompleteMe
 const FakeTableHead = () => {
 	return (
 		<div className={style.fakeTableHead}>
+			{/* Pour l'accessibilité et la sémantique -> Une table, déso  */}
 			<p>Time</p>
 			<p>Blood sugar rate</p>
 			<p>Physical activity</p>

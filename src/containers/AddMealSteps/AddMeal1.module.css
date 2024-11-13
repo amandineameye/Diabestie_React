@@ -60,7 +60,9 @@
 				justify-content: center;
 				align-items: center;
 				gap: 1rem;
-				padding: 1rem;
+				height: 40%;
+				width: 100%;
+				/* padding: 1rem; */
 				border-bottom: 1px solid var(--boxesStroke);
 				font-weight: 400;
 
@@ -73,6 +75,8 @@
 				padding: 1rem;
 				align-items: center;
 				justify-content: center;
+				height: 60%;
+				width: 100%;
 
 				p {
 				}
