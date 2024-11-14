@@ -2,6 +2,7 @@ import style from "./AddMeal2.module.css";
 import MealBCC from "../../components/MealBCC/MealBCC";
 import TagsChoice from "../TagsChoice/TagsChoice";
 import CarbsResultsTable from "../CarbsResultsTable/CarbsResultsTable";
+import BolusCalcForm from "../BolusCalcForm/BolusCalcForm";
 
 let page = "addMeal2";
 
@@ -16,7 +17,9 @@ const AddMeal2 = ({ onClickAddMeal }) => {
 				<div className={style.carbsTableDiv}>
 					<CarbsResultsTable />
 				</div>
-				<div className={style.bolusCalcDiv}></div>
+				<div className={style.bolusCalcDiv}>
+					<BolusCalcForm />
+				</div>
 				<div className={style.previousMealsDiv1}>
 					<MealBCC page={page} />
 				</div>

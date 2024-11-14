@@ -1,0 +1,75 @@
+.bolusCalcForm {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	font-size: 15px;
+	padding-top: 1rem;
+
+	display: flex;
+	flex-direction: column;
+
+	.inputsRowsDiv {
+		height: 67%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 17%;
+		div {
+			display: flex;
+			align-items: center;
+			width: 100%;
+
+			label {
+				width: 50%;
+				margin-left: 2rem;
+			}
+
+			input {
+				margin-left: 2rem;
+				margin-right: 0.5rem;
+				width: 3rem;
+				height: 1.5rem;
+				outline: none;
+				text-align: center;
+				border-radius: 30px;
+				border: 1px solid var(--boxesStroke);
+				background-color: var(--inputBackground);
+			}
+
+			&:nth-of-type(3) {
+				input {
+					background-color: var(--bolusLight);
+					border-color: var(--bolusText);
+				}
+			}
+		}
+	}
+
+	.totalBolusDiv {
+		height: 33%;
+
+		display: flex;
+		align-items: center;
+		width: 100%;
+		border-top: 1px solid var(--boxesStroke);
+		margin-top: 1rem;
+
+		p {
+			width: 50%;
+			margin-left: 2rem;
+			font-weight: bold;
+		}
+
+		div {
+			margin-left: 2rem;
+			margin-right: 0.5rem;
+			width: 3rem;
+			height: 1.5rem;
+			outline: none;
+			text-align: center;
+			border-radius: 30px;
+			border: 1px solid var(--boxesStroke);
+			background-color: var(--inputBackground);
+		}
+	}
+}

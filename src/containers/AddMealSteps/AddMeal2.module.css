@@ -28,12 +28,12 @@
 		}
 
 		.carbsTableDiv {
-			grid-row-start: 1;
-			grid-row-end: 3;
-		}
-		.bolusCalcDiv {
 			grid-row-start: 3;
 			grid-row-end: 5;
+		}
+		.bolusCalcDiv {
+			grid-row-start: 1;
+			grid-row-end: 3;
 		}
 		.previousMealsDiv1 {
 			grid-row-start: 1;
