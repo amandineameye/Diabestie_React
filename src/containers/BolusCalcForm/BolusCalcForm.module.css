@@ -3,37 +3,46 @@
 	height: 100%;
 	margin: 0;
 	font-size: 15px;
-	padding-top: 1rem;
 
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 
 	.inputsRowsDiv {
 		height: 67%;
+		width: 100%;
+		padding: 1rem 0;
+		border-bottom: 1px solid var(--boxesStroke);
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		align-items: center;
 		gap: 17%;
-		div {
+		> div {
 			display: flex;
 			align-items: center;
-			width: 100%;
+			justify-content: space-between;
+			width: 60%;
 
 			label {
 				width: 50%;
-				margin-left: 2rem;
 			}
 
-			input {
-				margin-left: 2rem;
-				margin-right: 0.5rem;
-				width: 3rem;
-				height: 1.5rem;
-				outline: none;
-				text-align: center;
-				border-radius: 30px;
-				border: 1px solid var(--boxesStroke);
-				background-color: var(--inputBackground);
+			div {
+				width: 6.4rem;
+				input {
+					margin-right: 0.6rem;
+					width: 3rem;
+					height: 1.5rem;
+					outline: none;
+					text-align: center;
+					border-radius: 30px;
+					border: 1px solid var(--boxesStroke);
+					background-color: var(--inputBackground);
+				}
+
+				span {
+				}
 			}
 
 			&:nth-of-type(3) {
@@ -50,26 +59,28 @@
 
 		display: flex;
 		align-items: center;
-		width: 100%;
-		border-top: 1px solid var(--boxesStroke);
-		margin-top: 1rem;
+		justify-content: space-between;
+		width: 60%;
 
 		p {
 			width: 50%;
-			margin-left: 2rem;
 			font-weight: bold;
 		}
 
-		div {
-			margin-left: 2rem;
-			margin-right: 0.5rem;
-			width: 3rem;
-			height: 1.5rem;
-			outline: none;
-			text-align: center;
-			border-radius: 30px;
-			border: 1px solid var(--boxesStroke);
-			background-color: var(--inputBackground);
+		> div {
+			width: 6.4rem;
+			display: flex;
+			align-items: center;
+			div {
+				width: 3rem;
+				margin-right: 0.6rem;
+				height: 1.5rem;
+				outline: none;
+				text-align: center;
+				border-radius: 30px;
+				border: 1px solid var(--boxesStroke);
+				background-color: var(--inputBackground);
+			}
 		}
 	}
 }
