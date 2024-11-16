@@ -31,21 +31,20 @@ const MostRecentMeals = () => {
 	);
 };
 
-
 const Dashboard = () => {
 	return (
-			<main>
-				<GreetingsAndDate />
-				<div className={style.content}>
-					<div className={style.leftContent}>
-						<IncompleteMeals />
-						<QuickNote />
-					</div>
-					<div className={style.rightContent}>
-						<MostRecentMeals />
-					</div>
+		<main>
+			<GreetingsAndDate />
+			<div className={style.content}>
+				<div className={style.leftContent}>
+					<IncompleteMeals />
+					<QuickNote />
 				</div>
-			</main>
+				<div className={style.rightContent}>
+					<MostRecentMeals />
+				</div>
+			</div>
+		</main>
 	);
 };
 
