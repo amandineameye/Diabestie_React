@@ -1,15 +1,25 @@
 import style from "./Login.module.css";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getOneUserData } from "../../store/usersData/usersData.action";
 
 const Login = () => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		try {
+			if (!username || !password) {
+				console.log("Please fill in both fields.");
+				return;
+			}
 			const response = await axios.post("http://localhost:8000/auth/login", {
 				username,
 				password,
@@ -17,8 +27,11 @@ const Login = () => {
 			const token = response.data.token;
 			localStorage.setItem("authToken", token);
 			console.log("Token stored in localStorage:", token);
+
+			dispatch(getOneUserData());
+			navigate("/");
 		} catch (error) {
-			console.error("Login failed:", error);
+			console.log(error.response?.data?.error || error.message);
 		}
 	};
 
