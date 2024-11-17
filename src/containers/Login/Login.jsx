@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getOneUserData } from "../../store/usersData/usersData.action";
+import { Link } from "react-router-dom";
 
 const Login = () => {
 	const [username, setUsername] = useState("");
@@ -38,8 +39,9 @@ const Login = () => {
 	return (
 		<>
 			<form className={style.loginForm} onSubmit={handleSubmit}>
+				<h1>Log in to continue</h1>
 				<div>
-					<label htmlFor="username">Username: </label>
+					<label htmlFor="username">Username</label>
 					<input
 						type="text"
 						name="username"
@@ -50,7 +52,7 @@ const Login = () => {
 					></input>
 				</div>
 				<div>
-					<label htmlFor="password">Password: </label>
+					<label htmlFor="password">Password</label>
 					<input
 						type="password"
 						name="password"
@@ -61,6 +63,9 @@ const Login = () => {
 					></input>
 				</div>
 				<button type="submit">Login</button>
+				<p>
+					Don't have an account yet? <Link to="/register">Register</Link>
+				</p>
 			</form>
 		</>
 	);

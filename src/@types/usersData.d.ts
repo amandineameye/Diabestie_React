@@ -3,7 +3,7 @@ export type AllUsersData = UserData[];
 export type UserData = {
 	_id: string;
 	firstName: string;
-	userName: string;
+	username: string;
 	password: string;
 	note: string;
 	meals: Meal[];

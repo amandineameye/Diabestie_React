@@ -1,4 +1,4 @@
-.loginForm {
+.registerForm {
 	display: flex;
 	flex-direction: column;
 	margin-top: 0;
@@ -23,7 +23,6 @@
 	button {
 		padding: 0.2rem;
 	}
-
 	a {
 		font-weight: bold;
 	}
