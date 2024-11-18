@@ -21,17 +21,17 @@ const routes = [
 			{
 				path: "history",
 				element: <History />,
-			},
-			{
-				path: "login",
-				element: <LoginPage />,
-			},
-			{
-				path: "register",
-				element: <RegisterPage />,
-			},
-		],
+			}
+		]
 	},
-];
+	{
+		path: "login",
+		element: <LoginPage />,
+	},
+	{
+		path: "register",
+		element: <RegisterPage />,
+	}
+]
 
 export default routes;
