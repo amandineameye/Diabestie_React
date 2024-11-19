@@ -1,5 +1,8 @@
 import style from "./History.module.css";
 import MealBCC from "../../components/MealBCC/MealBCC";
+import {useEffect} from "react";
+import { useNavigate } from "react-router-dom";
+
 
 let page = "history";
 
@@ -55,6 +58,14 @@ const MealsDiv = () => {
 };
 
 const History = () => {
+	const navigate = useNavigate();
+
+
+	useEffect(() => {
+		if (localStorage.getItem("authToken") === null) {
+		  navigate("/login");
+		}
+	  }, [navigate]);
 	return (
 			<main>
 				<div className={style.mainContentDiv}>

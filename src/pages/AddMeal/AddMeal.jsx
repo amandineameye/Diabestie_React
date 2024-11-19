@@ -1,11 +1,20 @@
 import AddMeal1 from "../../containers/AddMealSteps/AddMeal1.jsx";
 import AddMeal2 from "../../containers/AddMealSteps/AddMeal2.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AddMeal = () => {
-  const [step, setStep] = useState(1);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("authToken") === null) {
+      navigate("/login");
+    }
+  }, [navigate]);
+
+  const [step, setStep] = useState(1);
+ 
 
   const handleNext = () => {
     setStep(2);
