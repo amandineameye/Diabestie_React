@@ -66,14 +66,13 @@
     .meals {
       flex-grow: 1;
       justify-content: center;
-      /* background-color: beige; */
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: var(--spacer);
 
       > * {
-        border: dotted goldenrod 0.1ch;
+        border: dotted var(--lighterFont) 0.1ch;
         border-radius: 1em;
         padding: calc(var(--spacer) / 2);
       }

@@ -1,12 +1,11 @@
 .greetingsAndDate {
 	height: 4rem;
 	width: 100%;
-
-	padding: 0.5rem 0;
+	
 
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: start;
 
 	h1 {
 		font-size: 2rem;
