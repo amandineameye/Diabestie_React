@@ -35,11 +35,10 @@ const AddMeal1 = ({onClickNext}) => {
 					</div>
 					<SearchBar />
 					<div className={style.resultsDiv}>
-						<NewCarb />
-						<NewCarb />
-						<NewCarb />
-						<NewCarb />
-						<NewCarb />
+					<NewCarb />
+					<NewCarb />
+					<NewCarb />
+					<NewCarb />
 					</div>
 					
 						<button className={style.nextButton} onClick={onClickNext}>Next</button>
