@@ -47,12 +47,12 @@ const CheckboxesDiv = () => {
 const MealsDiv = () => {
 	return (
 		<div className={style.mealsDiv}>
-			<MealBCC page={page} />
-			<MealBCC page={page} />
-			<MealBCC page={page} />
-			<MealBCC page={page} />
-			<MealBCC page={page} />
-			<MealBCC page={page} />
+			<MealBCC page={page} className={style.row1}/>
+			<MealBCC page={page} className={style.row2}/>
+			<MealBCC page={page} className={style.row3}/>
+			<MealBCC page={page} className={style.row4}/>
+			<MealBCC page={page} className={style.row5}/>
+			<MealBCC page={page} className={style.row6}/>
 		</div>
 	);
 };

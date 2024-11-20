@@ -80,7 +80,6 @@
 .historyRow {
 	gap: 3.3rem;
 	background-color: var(--boxes);
-	width: calc((100% - 1.9rem) / 2);
 	align-items: center;
 	padding-bottom: 0.2rem;
 	border-radius: 10px;
