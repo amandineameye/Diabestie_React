@@ -43,7 +43,7 @@ const Dashboard = () => {
   }, [navigate]);
 
   return (
-    <main>
+    <main className="connectedMain">
       <GreetingsAndDate />
       <div className={style.content}>
         <div className={style.leftContent}>

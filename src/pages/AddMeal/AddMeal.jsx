@@ -26,7 +26,7 @@ const AddMeal = () => {
   };
 
   return (
-    <main>
+    <main className="connectedMain">
       {step === 1 && <AddMeal1 onClickNext={handleNext} />}
       {step === 2 && <AddMeal2 onClickAddMeal={handleAddMeal} />}
     </main>

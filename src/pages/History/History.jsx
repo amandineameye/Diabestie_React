@@ -67,7 +67,7 @@ const History = () => {
 		}
 	  }, [navigate]);
 	return (
-			<main>
+			<main className="connectedMain">
 				<div className={style.mainContentDiv}>
 					<h1>History of meals</h1>
 					<div className={style.filtersDiv}>
