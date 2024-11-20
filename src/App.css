@@ -16,11 +16,11 @@
 
 	--dropShadow: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.15));
 	--boxShadow: 0 0.2ch 0.2ch rgba(0, 0, 0, 0.25);
+
+	--spacer: 1.9rem;
 }
 
 body {
-	min-height: 100vh;
-	width: 100vw;
 	background-color: var(--background);
 	font-family: "Roboto", sans-serif;
 	font-weight: 300;
@@ -29,21 +29,22 @@ body {
 }
 
 #root {
+	min-height: 100vh;
+	width: 100vw;
 	margin: 0;
 	padding: 0;
 	display: flex;
+	flex-direction: row;
+	gap: var(--spacer);
+	padding: var(--spacer);
 }
 
-/* main {
-	height: calc(100vh - 2 * 1.9rem);
-	width: calc(100vw - 19vw - 3 * 1.9rem);
-
-	margin: 1.9rem;
-	margin-left: 0;
+main {
+	flex-grow: 1;
 
 	display: flex;
 	flex-direction: column;
-} */
+}
 
 h1 {
 	font-size: 2rem;
@@ -55,13 +56,4 @@ h2 {
 	font-weight: 300;
 }
 
-.connectedMain {
-	height: calc(100vh - 2 * 1.9rem);
-	width: calc(100vw - 19vw - 3 * 1.9rem);
 
-	margin: 1.9rem;
-	margin-left: 0;
-
-	display: flex;
-	flex-direction: column;
-}

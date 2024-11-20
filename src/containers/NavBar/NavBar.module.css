@@ -2,11 +2,9 @@ nav {
 	background-color: var(--boxes);
 	display: flex;
 	flex-direction: column;
-	margin: 1.9rem;
 	align-items: center;
 	border-radius: 10px;
 	font-size: 1.1rem;
-	height: calc(100vh - 2 * 1.9rem);
 	width: 19vw;
 
 	.navTitle {

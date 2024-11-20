@@ -20,16 +20,16 @@ const QuickNote = () => {
 
 const MostRecentMeals = () => {
   return (
-    <>
-      <h2>Most recent meals</h2>
-      <div className={style.data}>
+    <div className={style.data}>
+        <h2>Most recent meals</h2>
+        <div className={style.meals}>
         <MealBCC page={page} />
         <MealBCC page={page} />
         <MealBCC page={page} />
         <MealBCC page={page} />
         <MealBCC page={page} />
+        </div>
       </div>
-    </>
   );
 };
 
@@ -46,13 +46,9 @@ const Dashboard = () => {
     <main className="connectedMain">
       <GreetingsAndDate />
       <div className={style.content}>
-        <div className={style.leftContent}>
-          <IncompleteMeals />
+          <IncompleteMeals className={style.incompleteMeals} />
           <QuickNote />
-        </div>
-        <div className={style.rightContent}>
           <MostRecentMeals />
-        </div>
       </div>
     </main>
   );

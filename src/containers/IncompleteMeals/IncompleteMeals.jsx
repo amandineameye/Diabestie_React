@@ -13,9 +13,9 @@ const FakeTableHead = () => {
 	);
 };
 
-const IncompleteMeals = () => {
+const IncompleteMeals = ({className = ""}) => {
 	return (
-		<div className={style.incompleteMeals}>
+		<div className={`${style.incompleteMeals} ${className}`}>
 			<h2>Incomplete meals</h2>
 			<div className={style.fakeTable}>
 				<FakeTableHead />
