@@ -14,7 +14,6 @@ const GreetingsAndDate = () => {
 		greetings = "Good evening";
 	}
 
-	console.log(now.getHours());
 	return (
 		<div className={style.greetingsAndDate}>
 			<h1>

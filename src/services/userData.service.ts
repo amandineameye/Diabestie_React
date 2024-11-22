@@ -7,7 +7,7 @@ export async function fetchUserData(): Promise<UserData> {
 	const token = localStorage.getItem("authToken");
 	const headers = {
 		headers: {
-			Authorization: `Bearer ${token}`, // Include the token in the request headers
+			authorization: `Bearer ${token}`, // Include the token in the request headers
 		},
 	};
 	const response = await axios.get<UserData>(url, headers);

@@ -29,7 +29,9 @@ const Login = () => {
 			localStorage.setItem("authToken", token);
 			console.log("Token stored in localStorage:", token);
 
-			dispatch(getOneUserData());
+			// console.log(response.data.userObject);
+
+			// dispatch(getOneUserData());
 			navigate("/");
 		} catch (error) {
 			console.log(error.response?.data?.error || error.message);
