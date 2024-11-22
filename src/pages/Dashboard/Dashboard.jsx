@@ -6,14 +6,58 @@ import DeleteButton from "../../components/DeleteButton/DeleteButton";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
+import { checkTokenPresentAndUnexpired } from "../../tools/authTools.js";
+import { useState } from "react";
 
 let page = "dashboard";
 
 const QuickNote = () => {
+	const [note, setNote] = useState("");
+	const [isLoading, setLoading] = useState(false);
+
+	const getNote = async () => {
+		try {
+			const token = localStorage.getItem("authToken");
+			const headers = {
+				headers: {
+					authorization: `Bearer ${token}`,
+				},
+			};
+			const response = await axios.get(
+				"http://localhost:8000/dashboard/getNote",
+				headers
+			);
+			return response.data.note;
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	useEffect(() => {
+		const fetchNote = async () => {
+			setLoading(true);
+			const fetchedNote = await getNote();
+			setNote(fetchedNote);
+			setLoading(false);
+		};
+		fetchNote();
+	}, []);
+
+	const handleChange = (e) => {
+		setNote(e.target.value);
+	};
+
 	return (
 		<div className={style.note}>
 			<h2>Quick note</h2>
-			<textarea name="postIt" id="postIt" className={style.postIt}></textarea>
+			<textarea
+				name="postIt"
+				id="postIt"
+				className={style.postIt}
+				value={note}
+				onChange={handleChange}
+				disabled={isLoading}
+			></textarea>
 			<DeleteButton page={page} />
 		</div>
 	);
@@ -38,33 +82,11 @@ const Dashboard = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		if (localStorage.getItem("authToken") === null) {
+		const isTokenValid = checkTokenPresentAndUnexpired();
+		if (!isTokenValid) {
 			navigate("/login");
 		}
 	}, [navigate]);
-
-	const getNote = async () => {
-		try {
-			const token = localStorage.getItem("authToken");
-			const headers = {
-				headers: {
-					authorization: `Bearer ${token}`,
-				},
-			};
-			const response = await axios.get(
-				"http://localhost:8000/dashboard/getNote",
-				headers
-			);
-			return response.data.note;
-		} catch (error) {
-			console.log(JSON.stringify(error));
-		}
-	};
-
-	useEffect(() => {
-		const note = getNote();
-		console.log("My note is: ", note);
-	}, []);
 
 	return (
 		<main className="connectedMain">
