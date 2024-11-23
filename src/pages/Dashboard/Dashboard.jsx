@@ -1,13 +1,12 @@
 import style from "./Dashboard.module.css";
+import axios from "axios";
 import GreetingsAndDate from "../../containers/GreetingsAndDate/GreetingsAndDate";
 import IncompleteMeals from "../../containers/IncompleteMeals/IncompleteMeals";
 import MealBCC from "../../components/MealBCC/MealBCC";
 import DeleteButton from "../../components/DeleteButton/DeleteButton";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { checkTokenPresentAndUnexpired } from "../../tools/authTools.js";
-import { useState } from "react";
 
 let page = "dashboard";
 
