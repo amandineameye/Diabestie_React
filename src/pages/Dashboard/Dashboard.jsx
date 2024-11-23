@@ -1,5 +1,4 @@
 import style from "./Dashboard.module.css";
-import axios from "axios";
 import GreetingsAndDate from "../../containers/GreetingsAndDate/GreetingsAndDate";
 import IncompleteMeals from "../../containers/IncompleteMeals/IncompleteMeals";
 import MealBCC from "../../components/MealBCC/MealBCC";
@@ -7,44 +6,31 @@ import DeleteButton from "../../components/DeleteButton/DeleteButton";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { checkTokenPresentAndUnexpired } from "../../tools/authTools.js";
+import { fetchNote, patchNote } from "../../services/dashboard.service.js";
 
-let page = "dashboard";
+let service = "dashboard";
 
 const QuickNote = () => {
 	const [note, setNote] = useState("");
 	const [isLoading, setLoading] = useState(false);
 
-	const getNote = async () => {
-		try {
-			const token = localStorage.getItem("authToken");
-			const headers = {
-				headers: {
-					authorization: `Bearer ${token}`,
-				},
-			};
-			const response = await axios.get(
-				"http://localhost:8000/dashboard/getNote",
-				headers
-			);
-			return response.data.note;
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
-	useEffect(() => {
-		const fetchNote = async () => {
-			setLoading(true);
-			const fetchedNote = await getNote();
-			setNote(fetchedNote);
-			setLoading(false);
-		};
-		fetchNote();
-	}, []);
-
 	const handleChange = (e) => {
 		setNote(e.target.value);
 	};
+
+	const handleBlur = async () => {
+		await patchNote(note);
+	};
+
+	useEffect(() => {
+		const getNote = async () => {
+			setLoading(true);
+			const fetchedNote = await fetchNote();
+			setNote(fetchedNote);
+			setLoading(false);
+		};
+		getNote();
+	}, []);
 
 	return (
 		<div className={style.note}>
@@ -55,9 +41,12 @@ const QuickNote = () => {
 				className={style.postIt}
 				value={note}
 				onChange={handleChange}
+				onBlur={handleBlur}
 				disabled={isLoading}
 			></textarea>
-			<DeleteButton page={page} />
+			<div className={style.buttonDiv}>
+				<DeleteButton />
+			</div>
 		</div>
 	);
 };
@@ -67,11 +56,11 @@ const MostRecentMeals = () => {
 		<div className={style.data}>
 			<h2>Most recent meals</h2>
 			<div className={style.meals}>
-				<MealBCC page={page} />
-				<MealBCC page={page} />
-				<MealBCC page={page} />
-				<MealBCC page={page} />
-				<MealBCC page={page} />
+				<MealBCC service={service} />
+				<MealBCC service={service} />
+				<MealBCC service={service} />
+				<MealBCC service={service} />
+				<MealBCC service={service} />
 			</div>
 		</div>
 	);

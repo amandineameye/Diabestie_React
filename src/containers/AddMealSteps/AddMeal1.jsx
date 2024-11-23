@@ -1,6 +1,5 @@
 import style from "./AddMeal1.module.css";
 import DeleteButton from "../../components/DeleteButton/DeleteButton";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const SearchBar = () => {
@@ -31,7 +30,7 @@ const NewCarb = () => {
 	return (
 		<div className={style.newCarb}>
 			<div className={style.cardHeader}>
-				<DeleteButton page="addMeal1" />
+				<DeleteButton />
 				<p>White Bread</p>
 			</div>
 			<div className={style.cardContent}>

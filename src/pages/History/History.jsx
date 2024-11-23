@@ -1,10 +1,9 @@
 import style from "./History.module.css";
 import MealBCC from "../../components/MealBCC/MealBCC";
-import {useEffect} from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-
-let page = "history";
+let service = "history";
 
 const SelectsDiv = () => {
 	return (
@@ -47,12 +46,12 @@ const CheckboxesDiv = () => {
 const MealsDiv = () => {
 	return (
 		<div className={style.mealsDiv}>
-			<MealBCC page={page} className={style.row1}/>
-			<MealBCC page={page} className={style.row2}/>
-			<MealBCC page={page} className={style.row3}/>
-			<MealBCC page={page} className={style.row4}/>
-			<MealBCC page={page} className={style.row5}/>
-			<MealBCC page={page} className={style.row6}/>
+			<MealBCC service={service} className={style.row1} />
+			<MealBCC service={service} className={style.row2} />
+			<MealBCC service={service} className={style.row3} />
+			<MealBCC service={service} className={style.row4} />
+			<MealBCC service={service} className={style.row5} />
+			<MealBCC service={service} className={style.row6} />
 		</div>
 	);
 };
@@ -60,24 +59,23 @@ const MealsDiv = () => {
 const History = () => {
 	const navigate = useNavigate();
 
-
 	useEffect(() => {
 		if (localStorage.getItem("authToken") === null) {
-		  navigate("/login");
+			navigate("/login");
 		}
-	  }, [navigate]);
+	}, [navigate]);
 	return (
-			<main className="connectedMain">
-				<div className={style.mainContentDiv}>
-					<h1>History of meals</h1>
-					<div className={style.filtersDiv}>
-						<SelectsDiv />
-						<CheckboxesDiv />
-					</div>
-					<MealsDiv />
-					<button className={style.viewMoreButton}>View more</button>
+		<main className="connectedMain">
+			<div className={style.mainContentDiv}>
+				<h1>History of meals</h1>
+				<div className={style.filtersDiv}>
+					<SelectsDiv />
+					<CheckboxesDiv />
 				</div>
-			</main>
+				<MealsDiv />
+				<button className={style.viewMoreButton}>View more</button>
+			</div>
+		</main>
 	);
 };
 

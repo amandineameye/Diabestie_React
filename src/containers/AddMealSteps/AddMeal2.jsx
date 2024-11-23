@@ -4,7 +4,7 @@ import TagsChoice from "../TagsChoice/TagsChoice";
 import CarbsResultsTable from "../CarbsResultsTable/CarbsResultsTable";
 import BolusCalcForm from "../BolusCalcForm/BolusCalcForm";
 
-let page = "addMeal2";
+let service = "addMeal2";
 
 const AddMeal2 = ({ onClickAddMeal }) => {
 	return (
@@ -21,13 +21,13 @@ const AddMeal2 = ({ onClickAddMeal }) => {
 					<BolusCalcForm />
 				</div>
 				<div className={style.previousMealsDiv1}>
-					<MealBCC page={page} />
+					<MealBCC service={service} />
 				</div>
 				<div className={style.previousMealsDiv2}>
-					<MealBCC page={page} />
+					<MealBCC service={service} />
 				</div>
 				<div className={style.previousMealsDiv3}>
-					<MealBCC page={page} />
+					<MealBCC service={service} />
 				</div>
 				<div className={style.tagsDiv}>
 					<TagsChoice />

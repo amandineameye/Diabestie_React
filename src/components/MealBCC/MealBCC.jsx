@@ -1,15 +1,15 @@
 import { CoffeeIcon } from "../Icons/Icons";
 import style from "./MealBCC.module.css";
 
-const MealBCC = ({ page }) => {
+const MealBCC = ({ service }) => {
 	return (
 		<div
 			className={`${style.row} ${
-				page === "dashboard"
+				service === "dashboard"
 					? style.dashboardRow
-					: page === "addMeal2"
+					: service === "addMeal2"
 					? style.addMeal2Row
-					: page === "history"
+					: service === "history"
 					? style.historyRow
 					: ""
 			}`}
@@ -26,7 +26,7 @@ const MealBCC = ({ page }) => {
 				<p>Change</p>
 				<p className={style.change}>-30</p>
 			</div>
-			{(page === "history" || page === "addMeal2") && (
+			{(service === "history" || service === "addMeal2") && (
 				<div className={style.tagsDiv}>
 					<CoffeeIcon />
 					<div>🍩</div>

@@ -2,8 +2,6 @@ import style from "./Login.module.css";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getOneUserData } from "../../store/usersData/usersData.action";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -11,7 +9,6 @@ const Login = () => {
 	const [password, setPassword] = useState("");
 
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -31,7 +28,6 @@ const Login = () => {
 
 			// console.log(response.data.userObject);
 
-			// dispatch(getOneUserData());
 			navigate("/");
 		} catch (error) {
 			console.log(error.response?.data?.error || error.message);

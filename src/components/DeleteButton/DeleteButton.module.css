@@ -11,11 +11,8 @@
 	font-size: 0.7rem;
 }
 
-.postItDeleteButton {
+.dashboardDeleteButton {
 	position: absolute;
 	right: 1rem;
 	bottom: 1rem;
-}
-
-.newCarbDeleteButton {
 }

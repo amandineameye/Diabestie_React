@@ -2,18 +2,18 @@ import style from "./NavBar.module.css";
 import logo from "../../assets/blood.png";
 import { Link } from "react-router-dom";
 
-const LinkList = ({ page }) => {
+const LinkList = ({ service }) => {
 	return (
 		<ul className={style.linksList}>
 			<Link to="/">
-				<li className={page === "dashboard" ? style.active : undefined}>
+				<li className={service === "dashboard" ? style.active : undefined}>
 					<span>🏠</span>Dashboard
 				</li>
 			</Link>
 			<Link to="/addMeal/step1">
 				<li
 					className={
-						page === "addMeal1" || page === "addMeal2"
+						service === "addMeal1" || service === "addMeal2"
 							? style.active
 							: undefined
 					}
@@ -22,7 +22,7 @@ const LinkList = ({ page }) => {
 				</li>
 			</Link>
 			<Link to="/history">
-				<li className={page === "history" ? style.active : undefined}>
+				<li className={service === "history" ? style.active : undefined}>
 					<span>🕣</span>Meals history
 				</li>
 			</Link>
@@ -35,14 +35,14 @@ const LinkList = ({ page }) => {
 	);
 };
 
-const NavBar = ({ page }) => {
+const NavBar = ({ service }) => {
 	return (
 		<nav>
 			<p className={style.navTitle}>
 				<img src={logo} alt="logo" className={style.logoIcon} />
 				Diabestie
 			</p>
-			<LinkList page={page} />
+			<LinkList service={service} />
 			<p className={style.account}>
 				<span className={style.userIcon}>👤</span>Amandine Ameye
 				<span className={style.logOutIcon}>🏃🏻‍♂️‍➡️</span>
