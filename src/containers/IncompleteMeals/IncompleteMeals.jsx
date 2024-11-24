@@ -2,6 +2,7 @@ import style from "./IncompleteMeals.module.css";
 import IncompleteMealForm from "../../components/IncompleteMealForm/IncompleteMealForm";
 import { fetchIncompleteMeals } from "../../services/dashboard.service.js";
 import { useEffect, useState } from "react";
+import useEffectAfterMount from "../../hooks/useEffectAfterMount.js";
 
 const TableHead = () => {
 	return (
@@ -78,6 +79,7 @@ const IncompleteMeals = ({ className = "" }) => {
 		<div className={`${style.incompleteMeals} ${className}`}>
 			<h2>Incomplete meals</h2>
 			<Table meals={meals} refreshMeals={refreshMeals} />
+			{meals.length === 0 && <p>All meals are complete</p>}
 		</div>
 	);
 };

@@ -10,12 +10,18 @@
 			tr {
 				th {
 					border-bottom: solid 1px var(--boxesStroke);
-					font-size: 1rem;
+					font-size: 0.9rem;
 					font-weight: 300;
 					color: var(--lighterFont);
 					padding-bottom: 1rem;
 				}
 			}
 		}
+	}
+	p {
+		text-align: center;
+		color: var(--font);
+		font-size: 0.9rem;
+		font-weight: 50;
 	}
 }
