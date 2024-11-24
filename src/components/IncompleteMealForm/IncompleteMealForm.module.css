@@ -1,57 +1,34 @@
-form {
-	display: flex;
-	margin-top: 1.5rem;
-
-	.time {
-		width: 15%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-
-		font-weight: 350;
-		color: var(--lighterFont);
-	}
-
-	.bloodSugarDiv {
-		width: 35%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		gap: 0.6rem;
+.row {
+	td {
+		padding-top: 1rem;
 		font-size: 0.8rem;
 
+		&:first-of-type {
+			font-weight: 350;
+			font-size: 1.1rem;
+		}
+
 		input {
-			width: 2.5rem;
-			padding: 0.2rem;
-			border-radius: 10px;
-			border: 1px solid var(--boxesStroke);
-			text-align: center;
-			background-color: var(--inputBackground);
-			color: var(--font);
+			&[type="text"] {
+				width: 2.5rem;
+				padding: 0.2rem;
+				border-radius: 10px;
+				border: 1px solid var(--boxesStroke);
+				text-align: center;
+				background-color: var(--inputBackground);
+				color: var(--font);
+			}
+			&[type="checkbox"] {
+				border: 1px solid var(--font);
+				filter: var(--dropShadow);
+				cursor: pointer;
+			}
 		}
 
 		span {
 			color: var(--lighterFont);
+			margin-left: 0.6rem;
 		}
-	}
-	.physicalActivityDiv {
-		width: 35%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-
-		input {
-			border: 1px solid var(--font);
-			filter: var(--dropShadow);
-			cursor: pointer;
-		}
-	}
-	.submitDiv {
-		width: 15%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-size: 0.8rem;
 
 		button {
 			border: none;

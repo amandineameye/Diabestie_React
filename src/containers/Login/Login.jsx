@@ -1,8 +1,8 @@
 import style from "./Login.module.css";
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { postCredentials } from "../../services/login.service";
 
 const Login = () => {
 	const [username, setUsername] = useState("");
@@ -18,16 +18,10 @@ const Login = () => {
 				console.log("Please fill in both fields.");
 				return;
 			}
-			const response = await axios.post("http://localhost:8000/auth/login", {
-				username,
-				password,
-			});
+			const response = await postCredentials(username, password);
 			const token = response.data.token;
 			localStorage.setItem("authToken", token);
 			console.log("Token stored in localStorage:", token);
-
-			// console.log(response.data.userObject);
-
 			navigate("/");
 		} catch (error) {
 			console.log(error.response?.data?.error || error.message);

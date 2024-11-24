@@ -6,9 +6,11 @@ import DeleteButton from "../../components/DeleteButton/DeleteButton";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { checkTokenPresentAndUnexpired } from "../../tools/authTools.js";
-import { fetchNote, patchNote } from "../../services/dashboard.service.js";
-
-let service = "dashboard";
+import {
+	fetchNote,
+	patchNote,
+	fetchMealsSummary,
+} from "../../services/dashboard.service.js";
 
 const QuickNote = () => {
 	const [note, setNote] = useState("");
@@ -44,23 +46,40 @@ const QuickNote = () => {
 				onBlur={handleBlur}
 				disabled={isLoading}
 			></textarea>
-			<div className={style.buttonDiv}>
-				<DeleteButton />
-			</div>
+			<DeleteButton />
 		</div>
 	);
 };
 
 const MostRecentMeals = () => {
+	const [meals, setMeals] = useState([]);
+
+	useEffect(() => {
+		const getMeals = async () => {
+			const fetchedMeals = await fetchMealsSummary();
+			console.log("FetchedMeals: ", fetchedMeals);
+
+			const processedMeals = fetchedMeals.map((meal) => {
+				return {
+					id: meal.id,
+					carbsGrams: meal.carbsGrams,
+					bolus: meal.bolus,
+					change: meal.bloodSugarAfter - meal.bloodSugarBefore,
+				};
+			});
+			console.log(processedMeals);
+			setMeals(processedMeals);
+		};
+		getMeals();
+	}, []);
+
 	return (
 		<div className={style.data}>
 			<h2>Most recent meals</h2>
 			<div className={style.meals}>
-				<MealBCC service={service} />
-				<MealBCC service={service} />
-				<MealBCC service={service} />
-				<MealBCC service={service} />
-				<MealBCC service={service} />
+				{meals.map((meal) => {
+					return <MealBCC key={meal.id} {...meal} />;
+				})}
 			</div>
 		</div>
 	);

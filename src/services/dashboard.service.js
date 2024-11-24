@@ -34,3 +34,13 @@ export const patchNote = async (note) => {
 		console.log(error);
 	}
 };
+
+export const fetchMealsSummary = async () => {
+	try {
+		const headers = putTokenInHeaders();
+		const response = await axios.get(baseUrl + "getMealsSummary", headers);
+		return response.data.meals;
+	} catch (error) {
+		console.log(error);
+	}
+};

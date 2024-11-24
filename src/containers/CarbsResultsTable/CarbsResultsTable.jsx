@@ -41,7 +41,7 @@ const Tfoot = () => {
 
 const CarbsResultsTable = () => {
 	return (
-		<table>
+		<table className={style.table}>
 			<Thead />
 			<tbody>
 				<CarbResultsRow />

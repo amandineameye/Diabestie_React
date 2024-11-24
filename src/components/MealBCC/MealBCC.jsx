@@ -1,32 +1,32 @@
 import { CoffeeIcon } from "../Icons/Icons";
 import style from "./MealBCC.module.css";
+import clsx from "clsx";
+import { useLocation } from "react-router-dom";
 
-const MealBCC = ({ service }) => {
+const MealBCC = ({ carbsGrams, bolus, change }) => {
+	let pathname = useLocation().pathname;
+
+	const divClassName = clsx(
+		style.row,
+		pathname === "/" && style.dashboardRow,
+		pathname === "/addMeal" && style.addMeal2Row,
+		pathname === "/history" && style.historyRow
+	);
 	return (
-		<div
-			className={`${style.row} ${
-				service === "dashboard"
-					? style.dashboardRow
-					: service === "addMeal2"
-					? style.addMeal2Row
-					: service === "history"
-					? style.historyRow
-					: ""
-			}`}
-		>
+		<div className={divClassName}>
 			<div className={style.cell}>
 				<p>Bolus</p>
-				<p className={style.bolus}>6</p>
+				<p className={style.bolus}>{bolus}</p>
 			</div>
 			<div className={style.cell}>
 				<p>Carbs</p>
-				<p className={style.carbs}>83</p>
+				<p className={style.carbs}>{carbsGrams}</p>
 			</div>
 			<div className={style.cell}>
 				<p>Change</p>
-				<p className={style.change}>-30</p>
+				<p className={style.change}>{change}</p>
 			</div>
-			{(service === "history" || service === "addMeal2") && (
+			{(pathname === "/history" || pathname === "/addMeal") && (
 				<div className={style.tagsDiv}>
 					<CoffeeIcon />
 					<div>🍩</div>

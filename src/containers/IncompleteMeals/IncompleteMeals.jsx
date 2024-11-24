@@ -1,30 +1,37 @@
 import style from "./IncompleteMeals.module.css";
 import IncompleteMealForm from "../../components/IncompleteMealForm/IncompleteMealForm";
 
-const FakeTableHead = () => {
+const TableHead = () => {
 	return (
-		<div className={style.fakeTableHead}>
-			{/* Pour l'accessibilité et la sémantique -> Une table, déso  */}
-			<p>Time</p>
-			<p>Blood sugar rate</p>
-			<p>Physical activity</p>
-			<p>Submit</p>
-		</div>
+		<thead>
+			<tr>
+				<th>Time</th>
+				<th>Blood sugar rate</th>
+				<th>Physical activity</th>
+				<th>Submit</th>
+			</tr>
+		</thead>
 	);
 };
 
-const IncompleteMeals = ({className = ""}) => {
+const Table = () => {
+	return (
+		<table className={style.table}>
+			<TableHead />
+			<tbody>
+				<IncompleteMealForm />
+				<IncompleteMealForm />
+				<IncompleteMealForm />
+			</tbody>
+		</table>
+	);
+};
+
+const IncompleteMeals = ({ className = "" }) => {
 	return (
 		<div className={`${style.incompleteMeals} ${className}`}>
 			<h2>Incomplete meals</h2>
-			<div className={style.fakeTable}>
-				<FakeTableHead />
-				<div className={style.fakeTableContent}>
-					<IncompleteMealForm />
-					<IncompleteMealForm />
-					<IncompleteMealForm />
-				</div>
-			</div>
+			<Table />
 		</div>
 	);
 };
