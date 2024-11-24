@@ -44,3 +44,30 @@ export const fetchMealsSummary = async () => {
 		console.log(error);
 	}
 };
+
+export const fetchIncompleteMeals = async () => {
+	try {
+		const headers = putTokenInHeaders();
+		const response = await axios.get(baseUrl + "getIncompleteMeals", headers);
+		return response.data.meals;
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const patchIncompleteMeals = async (
+	mealId,
+	bloodSugarAfter,
+	wasActiveAfter
+) => {
+	try {
+		const headers = putTokenInHeaders();
+		const response = await axios.patch(
+			baseUrl + "updateIncompleteMeal",
+			{ mealId, bloodSugarAfter, wasActiveAfter },
+			headers
+		);
+	} catch (error) {
+		console.log(error);
+	}
+};

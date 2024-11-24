@@ -1,19 +1,19 @@
 .incompleteMeals {
 	display: flex;
 	flex-direction: column;
-	gap: var(--spacer);
 	.table {
 		border-collapse: collapse;
 		text-align: center;
 		vertical-align: center;
+		margin: auto 0;
 		thead {
 			tr {
 				th {
 					border-bottom: solid 1px var(--boxesStroke);
-					font-size: 0.9rem;
+					font-size: 1rem;
 					font-weight: 300;
 					color: var(--lighterFont);
-					padding: 0.7rem 0;
+					padding-bottom: 1rem;
 				}
 			}
 		}

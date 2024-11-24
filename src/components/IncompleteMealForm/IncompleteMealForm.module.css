@@ -1,6 +1,11 @@
 .row {
+	&:first-of-type {
+		td {
+			padding-top: 1.2rem;
+		}
+	}
 	td {
-		padding-top: 1rem;
+		padding: 0.6rem 0;
 		font-size: 0.8rem;
 
 		&:first-of-type {
