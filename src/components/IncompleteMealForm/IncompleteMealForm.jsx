@@ -16,15 +16,16 @@ const IncompleteMealForm = ({ id, time, refreshMeals }) => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-
 		try {
-			const response = await patchIncompleteMeals(
+			console.log("Submitting form...");
+			const patchResponse = await patchIncompleteMeals(
 				id,
 				parseInt(bloodSugarAfter),
 				wasActiveAfter
 			);
-			console.log("Response data: ", response.data);
+			console.log("Form submitted, refreshing meals...", patchResponse);
 			await refreshMeals();
+			console.log("Meals refreshed.");
 		} catch (error) {
 			console.log(error);
 		}

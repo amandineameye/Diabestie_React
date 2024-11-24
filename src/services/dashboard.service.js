@@ -62,12 +62,15 @@ export const patchIncompleteMeals = async (
 ) => {
 	try {
 		const headers = putTokenInHeaders();
+		console.log(headers);
 		const response = await axios.patch(
 			baseUrl + "updateIncompleteMeal",
 			{ mealId, bloodSugarAfter, wasActiveAfter },
-			headers
+			{ ...headers, timeout: 2000 }
 		);
+		console.log(response);
+		return response.data;
 	} catch (error) {
-		console.log(error);
+		console.log("patchIncompleteMeals ERROR", JSON.stringify(error));
 	}
 };

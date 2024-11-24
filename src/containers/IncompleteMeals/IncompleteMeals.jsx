@@ -40,7 +40,6 @@ const IncompleteMeals = ({ className = "" }) => {
 
 	const getMeals = async () => {
 		const fetchedMeals = await fetchIncompleteMeals();
-		console.log("Fetched incomplete meals: ", fetchedMeals);
 
 		const processedMeals = fetchedMeals.map((meal) => {
 			const date = new Date(meal.time);
@@ -55,8 +54,17 @@ const IncompleteMeals = ({ className = "" }) => {
 				time: processedTime,
 			};
 		});
-		console.log("Fetched processed incomplete meals: ", processedMeals);
 		setMeals(processedMeals);
+		return processedMeals;
+	};
+
+	const refreshMeals = async () => {
+		try {
+			const processedMeals = await getMeals();
+			console.log("Refreshed meals:", processedMeals);
+		} catch (error) {
+			console.log("Could not refresh meals");
+		}
 	};
 
 	useEffect(() => {
@@ -64,12 +72,12 @@ const IncompleteMeals = ({ className = "" }) => {
 			await getMeals();
 		};
 		fetchMeals();
-	}, [meals]);
+	}, []);
 
 	return (
 		<div className={`${style.incompleteMeals} ${className}`}>
 			<h2>Incomplete meals</h2>
-			<Table meals={meals} refreshMeals={getMeals} />
+			<Table meals={meals} refreshMeals={refreshMeals} />
 		</div>
 	);
 };

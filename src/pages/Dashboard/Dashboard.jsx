@@ -57,7 +57,6 @@ const MostRecentMeals = () => {
 	useEffect(() => {
 		const getMeals = async () => {
 			const fetchedMeals = await fetchMealsSummary();
-			console.log("FetchedMeals: ", fetchedMeals);
 
 			const processedMeals = fetchedMeals.map((meal) => {
 				return {
@@ -67,7 +66,6 @@ const MostRecentMeals = () => {
 					change: meal.bloodSugarAfter - meal.bloodSugarBefore,
 				};
 			});
-			console.log(processedMeals);
 			setMeals(processedMeals);
 		};
 		getMeals();
