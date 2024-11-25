@@ -1,4 +1,5 @@
 import style from "./GreetingsAndDate.module.css";
+import { useSelector } from "react-redux";
 
 const GreetingsAndDate = () => {
 	let greetings;
@@ -14,10 +15,14 @@ const GreetingsAndDate = () => {
 		greetings = "Good evening";
 	}
 
+	const firstName = useSelector(
+		(state) => state.userData?.data?.firstName || "User"
+	);
+
 	return (
 		<div className={style.greetingsAndDate}>
 			<h1>
-				{greetings}, <span>Amandine</span>
+				{greetings}, <span>{firstName}</span>
 			</h1>
 			<p>{date}</p>
 		</div>

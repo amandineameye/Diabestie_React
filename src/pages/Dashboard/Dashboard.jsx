@@ -11,6 +11,8 @@ import {
 	patchNote,
 	fetchMealsSummary,
 } from "../../services/dashboard.service.js";
+import { useDispatch } from "react-redux";
+import { getUserNames } from "../../store/usersData/usersData.action.ts";
 
 const QuickNote = () => {
 	const [note, setNote] = useState("");
@@ -85,6 +87,7 @@ const MostRecentMeals = () => {
 
 const Dashboard = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		const isTokenValid = checkTokenPresentAndUnexpired();
@@ -92,6 +95,10 @@ const Dashboard = () => {
 			navigate("/login");
 		}
 	}, [navigate]);
+
+	useEffect(() => {
+		dispatch(getUserNames());
+	}, [dispatch]);
 
 	return (
 		<main className="connectedMain">

@@ -1,10 +1,15 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { getOneUserData } from "./usersData.action";
+import { getOneUserData, getUserNames } from "./usersData.action";
 import { UserData } from "../../@types/usersData";
+
+type UserNames = {
+	firstName: string;
+	username: string;
+};
 
 type userDataReducerState = {
 	isLoading: boolean;
-	data?: UserData;
+	data?: UserNames;
 	error?: string;
 };
 
@@ -16,16 +21,16 @@ const initialState: userDataReducerState = {
 
 const usersDataReducer = createReducer(initialState, (builder) => {
 	builder
-		.addCase(getOneUserData.pending, (state) => {
+		.addCase(getUserNames.pending, (state) => {
 			state.isLoading = true;
 			state.data = undefined;
 			state.error = undefined;
 		})
-		.addCase(getOneUserData.fulfilled, (state, action) => {
+		.addCase(getUserNames.fulfilled, (state, action) => {
 			state.isLoading = false;
 			state.data = action.payload;
 		})
-		.addCase(getOneUserData.rejected, (state, action) => {
+		.addCase(getUserNames.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.error.message ?? "Oups !";
 		});
