@@ -1,34 +1,39 @@
 .registerForm {
-  display: flex;
-  flex-direction: column;
-  margin-top: 0;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	margin-top: 0;
+	align-items: center;
+	justify-content: center;
+	gap: 1.5rem;
 
-  h1 {
-    margin-bottom: 2.5rem;
-  }
+	h1 {
+		margin-bottom: var(--spacer);
+	}
 
-  div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
+	.errorMessage {
+		font-weight: 500;
+		margin-bottom: var(--spacer);
+	}
 
-    input {
-      padding: 0.3rem;
-    }
-  }
+	div {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
 
-  button {
-    padding: 0.2rem;
-    margin-top: 0.5rem;
-  }
+		input {
+			padding: 0.3rem;
+		}
+	}
 
-  p {
-    margin-top: 2.5rem;
-    a {
-      font-weight: bold;
-    }
-  }
+	button {
+		padding: 0.2rem;
+		margin-top: 0.5rem;
+	}
+
+	.haveAnAccountP {
+		margin-top: var(--spacer);
+		a {
+			font-weight: bold;
+		}
+	}
 }

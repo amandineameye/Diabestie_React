@@ -27,9 +27,9 @@ export const patchNote = async (note) => {
 		const response = await axios.patch(
 			baseUrl + "updateNote",
 			{ updatedNote: note },
-			{ ...headers, timeout: 100 }
+			headers
 		);
-		console.log(response.data);
+		console.log(response.data.message);
 	} catch (error) {
 		console.log(error);
 	}
@@ -66,11 +66,10 @@ export const patchIncompleteMeals = async (
 		const response = await axios.patch(
 			baseUrl + "updateIncompleteMeal",
 			{ mealId, bloodSugarAfter, wasActiveAfter },
-			{ ...headers, timeout: 100 }
+			headers
 		);
-		console.log(response);
-		return response.data;
+		console.log(response.data.message);
 	} catch (error) {
-		console.log("patchIncompleteMeals ERROR", JSON.stringify(error));
+		console.log(error);
 	}
 };

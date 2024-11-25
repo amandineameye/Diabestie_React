@@ -2,7 +2,6 @@ import style from "./IncompleteMeals.module.css";
 import IncompleteMealForm from "../../components/IncompleteMealForm/IncompleteMealForm";
 import { fetchIncompleteMeals } from "../../services/dashboard.service.js";
 import { useEffect, useState } from "react";
-import useEffectAfterMount from "../../hooks/useEffectAfterMount.js";
 
 const TableHead = () => {
 	return (
