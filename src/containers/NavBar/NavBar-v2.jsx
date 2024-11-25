@@ -40,9 +40,7 @@ const LinkList = () => {
 };
 
 const NavBar = () => {
-	const username = useSelector(
-		(state) => state.userData?.data?.username || "User"
-	);
+	const username = useSelector((state) => state.userData?.data?.username || "");
 
 	return (
 		<nav>

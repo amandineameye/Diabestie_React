@@ -16,7 +16,7 @@ const GreetingsAndDate = () => {
 	}
 
 	const firstName = useSelector(
-		(state) => state.userData?.data?.firstName || "User"
+		(state) => state.userData?.data?.firstName || ""
 	);
 
 	return (
