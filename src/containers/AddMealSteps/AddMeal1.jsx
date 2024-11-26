@@ -1,9 +1,31 @@
 import style from "./AddMeal1.module.css";
 import DeleteButton from "../../components/DeleteButton/DeleteButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { postAndFetchCarbsOptions } from "../../services/addMeal1.service";
+
+const DropDown = ({ options }) => {
+	return (
+		<div>
+			{options.map((carb, index) => {
+				return (
+					<p key={index} className={style.carbP}>
+						{carb}
+					</p>
+				);
+			})}
+		</div>
+	);
+};
 
 const SearchBar = () => {
 	const [isFocused, setFocused] = useState(false);
+	const [inputText, setInputText] = useState("");
+	const [debouncedText, setDebouncedText] = useState("");
+	const [carbsOptions, setCarbsOptions] = useState([]);
+
+	const handleChange = (e) => {
+		setInputText(e.target.value);
+	};
 
 	const handleFocus = () => {
 		setFocused(true);
@@ -13,6 +35,39 @@ const SearchBar = () => {
 		setFocused(false);
 	};
 
+	useEffect(() => {
+		const handler = setTimeout(() => {
+			setDebouncedText(inputText);
+		}, 300);
+
+		return () => {
+			clearTimeout(handler);
+		};
+	}, [inputText]);
+
+	useEffect(() => {
+		if (debouncedText === "") {
+			setCarbsOptions([]);
+			return; // Exit early if input is empty
+		}
+
+		const searchCarbs = async () => {
+			try {
+				const response = await postAndFetchCarbsOptions(debouncedText);
+				console.log(response.data.matchingCarbs);
+				const carbsNamesArray = response.data.matchingCarbs.map(
+					(carbObject) => {
+						return carbObject.carb;
+					}
+				);
+				setCarbsOptions(carbsNamesArray);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		searchCarbs();
+	}, [debouncedText]);
+
 	return (
 		<div className={style.searchBarDiv}>
 			<span>🔎</span>
@@ -21,7 +76,11 @@ const SearchBar = () => {
 				onFocus={handleFocus}
 				onBlur={handleBlur}
 				placeholder={isFocused ? "" : "Type and select a carb"}
+				value={inputText}
+				onChange={handleChange}
+				className={carbsOptions.length && style.withOptions}
 			></input>
+			<DropDown options={carbsOptions} />
 		</div>
 	);
 };
