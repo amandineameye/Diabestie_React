@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import usersDataReducer from "./usersData/usersData.reducer";
-import carbsDataReducer from "./carbsData/carbsData.reducer";
+import mealDataReducer from "./mealData/mealData.reducer";
 
 export const store = configureStore({
 	reducer: {
 		userData: usersDataReducer,
-		carbsData: carbsDataReducer,
+		mealData: mealDataReducer,
 	},
 });
 export type AppStore = typeof store;

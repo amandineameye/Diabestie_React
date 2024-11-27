@@ -12,6 +12,11 @@ type CarbObjectWithoutQuantity = {
 	id: string;
 };
 
+type QuantityData = {
+	id: string;
+	carbsGrams: number;
+};
+
 export const carbAdd = createAction("carb/add", (carbObject: CarbObjectNew) => {
 	const payload: CarbObjectWithoutQuantity = {
 		...carbObject,
@@ -20,3 +25,5 @@ export const carbAdd = createAction("carb/add", (carbObject: CarbObjectNew) => {
 
 	return { payload };
 });
+
+export const quantityAdd = createAction<QuantityData>("carb/addQuantity");

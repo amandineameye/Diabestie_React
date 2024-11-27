@@ -3,7 +3,7 @@ import DeleteButton from "../../components/DeleteButton/DeleteButton";
 import { useState, useEffect } from "react";
 import { postAndFetchCarbsOptions } from "../../services/addMeal1.service";
 import { useDispatch, useSelector } from "react-redux";
-import { carbAdd } from "../../store/carbsData/carbsData.action.ts";
+import { carbAdd, quantityAdd } from "../../store/mealData/mealData.action.ts";
 
 const DropDown = ({ options, onSelect = () => {} }) => {
 	const dispatch = useDispatch();
@@ -108,6 +108,17 @@ const SearchBar = () => {
 };
 
 const NewCarb = ({ carb, id }) => {
+	const [quantity, setQuantity] = useState("");
+	const dispatch = useDispatch();
+
+	const handleBlur = () => {
+		const payload = {
+			id: id,
+			carbsGrams: quantity,
+		};
+		dispatch(quantityAdd(payload));
+	};
+
 	return (
 		<div className={style.newCarb}>
 			<div className={style.cardHeader}>
@@ -116,7 +127,14 @@ const NewCarb = ({ carb, id }) => {
 			</div>
 			<div className={style.cardContent}>
 				<p>Quantity</p>
-				<input type="text"></input>
+				<input
+					type="text"
+					value={quantity}
+					onChange={(e) => {
+						setQuantity(e.target.value);
+					}}
+					onBlur={handleBlur}
+				></input>
 				<span>g</span>
 			</div>
 		</div>
@@ -126,7 +144,7 @@ const AddMeal1 = ({ onClickNext }) => {
 	const [carbCards, setCarbCards] = useState([]);
 
 	const reduxCarbObjects = useSelector((state) => {
-		return state.carbsData;
+		return state.mealData.carbsData;
 	});
 
 	useEffect(() => {
