@@ -2,17 +2,16 @@ import style from "./AddMeal1.module.css";
 import DeleteButton from "../../components/DeleteButton/DeleteButton";
 import { useState, useEffect } from "react";
 import { postAndFetchCarbsOptions } from "../../services/addMeal1.service";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { carbAdd } from "../../store/carbsData/carbsData.action.ts";
 
-const DropDown = ({ options, onSelect = () => {}, onAddCarb = () => {} }) => {
+const DropDown = ({ options, onSelect = () => {} }) => {
 	const dispatch = useDispatch();
 
 	const handleClick = (carbObject) => {
-		console.log(carbObject);
+		console.log("HandleClick carbObject:", carbObject);
 		dispatch(carbAdd(carbObject));
 		onSelect();
-		onAddCarb(carbObject);
 	};
 
 	return (
@@ -34,7 +33,7 @@ const DropDown = ({ options, onSelect = () => {}, onAddCarb = () => {} }) => {
 	);
 };
 
-const SearchBar = ({ onAddCarb = () => {} }) => {
+const SearchBar = () => {
 	const [isFocused, setFocused] = useState(false);
 	const [inputText, setInputText] = useState("");
 	const [debouncedText, setDebouncedText] = useState("");
@@ -103,11 +102,7 @@ const SearchBar = ({ onAddCarb = () => {} }) => {
 				onChange={handleChange}
 				className={carbsOptions.length && style.withOptions}
 			></input>
-			<DropDown
-				options={carbsOptions}
-				onSelect={clearSearchBar}
-				onAddCarb={onAddCarb}
-			/>
+			<DropDown options={carbsOptions} onSelect={clearSearchBar} />
 		</div>
 	);
 };
@@ -130,17 +125,18 @@ const NewCarb = ({ carb }) => {
 const AddMeal1 = ({ onClickNext }) => {
 	const [carbCards, setCarbCards] = useState([]);
 
-	//Note: Carb objects are without the IDs because they come directly fron the DB, we added them to the state but we have not read it with useSelector
-	//Maybe an alternative would be to read the state in this component
-	const addCarbCard = (carbObject) => {
-		setCarbCards((previousArray) => {
-			return [...previousArray, carbObject];
-		});
-	};
+	const reduxCarbObjects = useSelector((state) => {
+		return state.carbsData;
+	});
+
+	useEffect(() => {
+		// Whenever reduxCarbObjects changes, update carbCards state
+		setCarbCards(reduxCarbObjects);
+	}, [reduxCarbObjects]); // Dependency on reduxCarbObjects
 
 	useEffect(() => {
 		if (carbCards.length) {
-			console.log(carbCards);
+			console.log("Last useEffect:", carbCards);
 		}
 	}, [carbCards]);
 
@@ -150,7 +146,7 @@ const AddMeal1 = ({ onClickNext }) => {
 				<h1>What carbs are you eating?</h1>
 				<h2>Add their quantity</h2>
 			</div>
-			<SearchBar onAddCarb={addCarbCard} />
+			<SearchBar />
 			<div className={style.resultsDiv}>
 				{carbCards.map((carbObject, index) => {
 					return <NewCarb key={index} {...carbObject} />;
