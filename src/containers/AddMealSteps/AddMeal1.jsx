@@ -107,7 +107,7 @@ const SearchBar = () => {
 	);
 };
 
-const NewCarb = ({ carb }) => {
+const NewCarb = ({ carb, id }) => {
 	return (
 		<div className={style.newCarb}>
 			<div className={style.cardHeader}>
@@ -148,8 +148,8 @@ const AddMeal1 = ({ onClickNext }) => {
 			</div>
 			<SearchBar />
 			<div className={style.resultsDiv}>
-				{carbCards.map((carbObject, index) => {
-					return <NewCarb key={index} {...carbObject} />;
+				{carbCards.map((carbObject) => {
+					return <NewCarb key={carbObject.id} {...carbObject} />;
 				})}
 			</div>
 
