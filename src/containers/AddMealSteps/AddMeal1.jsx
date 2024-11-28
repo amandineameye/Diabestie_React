@@ -154,6 +154,11 @@ const NewCarb = ({ carb, id, carbsGrams, onError = () => {} }) => {
 					value={localQuantity}
 					onChange={handleChange}
 					onBlur={handleBlur}
+					onKeyDown={(e) => {
+						if (e.key === "." || e.key === ",") {
+							e.preventDefault();
+						}
+					}}
 				></input>
 				<span>g</span>
 			</div>
@@ -206,7 +211,7 @@ const AddMeal1 = ({ onClickNext = () => {} }) => {
 		<div className={style.contentDiv}>
 			<div className={style.titlesDiv}>
 				<h1>What carbs are you eating?</h1>
-				<h2>Add their quantity</h2>
+				<h2>Add their quantity in grams</h2>
 			</div>
 			<SearchBar />
 			<div className={style.resultsDiv}>

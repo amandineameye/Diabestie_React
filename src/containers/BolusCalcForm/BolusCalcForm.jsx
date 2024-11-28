@@ -1,17 +1,49 @@
 import style from "./BolusCalcForm.module.css";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	bloodSugarAdd,
+	totalBolusAdd,
+	mealBolusAdd,
+	correctionBolusAdd,
+} from "../../store/mealData/mealData.action.ts";
 
 const BolusCalcForm = () => {
+	const dispatch = useDispatch();
+	const stateBloodSugar = useSelector(
+		(state) => state.mealData.bloodSugarBefore
+	);
+	const stateBolusObject = useSelector((state) => state.mealData.bolus);
+
 	const [bolusObject, setBolusObject] = useState({
-		correctionBolus: "",
-		mealBolus: "",
+		correctionBolus: stateBolusObject.correctionBolus,
+		mealBolus: stateBolusObject.mealBolus,
 	});
-	const [totalBolus, setTotalBolus] = useState("");
+	const [totalBolus, setTotalBolus] = useState(stateBolusObject.totalBolus);
+	const [bloodSugar, setBloodSugar] = useState(stateBloodSugar);
 
 	const handleChange = (e) => {
 		setBolusObject((prevObject) => {
-			return { ...prevObject, [e.target.name]: e.target.value };
+			return {
+				...prevObject,
+				[e.target.name]: parseFloat(e.target.value),
+			};
 		});
+	};
+
+	const handleBloodSugarBlur = () => {
+		dispatch(bloodSugarAdd(bloodSugar));
+	};
+
+	const handleBolusInputsBlur = (e) => {
+		if (totalBolus) {
+			dispatch(totalBolusAdd(totalBolus));
+		}
+		if (e.target.name === "correctionBolus") {
+			dispatch(correctionBolusAdd(bolusObject.correctionBolus));
+		} else if (e.target.name === "mealBolus") {
+			dispatch(mealBolusAdd(bolusObject.mealBolus));
+		}
 	};
 
 	useEffect(() => {
@@ -38,6 +70,11 @@ const BolusCalcForm = () => {
 							name="bloodSugarRate"
 							id="bloodSugarRate"
 							autoComplete="off"
+							value={bloodSugar}
+							onChange={(e) => {
+								setBloodSugar(parseInt(e.target.value));
+							}}
+							onBlur={handleBloodSugarBlur}
 						/>
 						<span>mg/dL</span>
 					</div>
@@ -50,9 +87,10 @@ const BolusCalcForm = () => {
 							type="number"
 							name="correctionBolus"
 							id="correctionBolus"
+							autoComplete="off"
 							value={bolusObject.correctionBolus}
 							onChange={handleChange}
-							autoComplete="off"
+							onBlur={handleBolusInputsBlur}
 						/>
 						<span>units</span>
 					</div>
@@ -68,6 +106,7 @@ const BolusCalcForm = () => {
 							autoComplete="off"
 							value={bolusObject.mealBolus}
 							onChange={handleChange}
+							onBlur={handleBolusInputsBlur}
 						/>
 						<span>units</span>
 					</div>

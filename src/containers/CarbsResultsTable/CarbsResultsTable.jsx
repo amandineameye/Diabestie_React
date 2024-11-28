@@ -20,11 +20,7 @@ const CarbResultsRow = ({ carb, carbsRate, carbsGrams, carbsResult }) => {
 			<th className={style.carbName}>{carb}</th>
 			<td>{parseInt(carbsGrams)}</td>
 			<td>{parseInt(carbsRate * 100)}</td>
-			<td>
-				{carbsResult % 1 === 0
-					? carbsResult.toFixed(0)
-					: carbsResult.toFixed(1)}
-			</td>
+			<td>{carbsResult}</td>
 		</tr>
 	);
 };
