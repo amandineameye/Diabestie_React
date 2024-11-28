@@ -133,4 +133,10 @@
 		align-items: center;
 		cursor: pointer;
 	}
+
+	.errorMessage {
+		font-weight: 500;
+		display: flex;
+		gap: 1rem;
+	}
 }

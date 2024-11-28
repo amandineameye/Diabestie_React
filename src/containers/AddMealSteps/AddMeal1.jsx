@@ -3,7 +3,11 @@ import DeleteButton from "../../components/DeleteButton/DeleteButton";
 import { useState, useEffect } from "react";
 import { postAndFetchCarbsOptions } from "../../services/addMeal1.service";
 import { useDispatch, useSelector } from "react-redux";
-import { carbAdd, quantityAdd } from "../../store/mealData/mealData.action.ts";
+import {
+	carbAdd,
+	quantityAdd,
+	carbDelete,
+} from "../../store/mealData/mealData.action.ts";
 
 const DropDown = ({ options, onSelect = () => {} }) => {
 	const dispatch = useDispatch();
@@ -107,11 +111,25 @@ const SearchBar = () => {
 	);
 };
 
-const NewCarb = ({ carb, id }) => {
-	const [quantity, setQuantity] = useState("");
+const NewCarb = ({ carb, id, carbsGrams, onError = () => {} }) => {
+	const [localQuantity, setLocalQuantity] = useState(carbsGrams || "");
 	const dispatch = useDispatch();
 
+	const handleChange = (e) => {
+		setLocalQuantity(e.target.value);
+		if (!isNaN(e.target.value) || e.target.value > 0) {
+			onError("");
+		}
+	};
+
 	const handleBlur = () => {
+		const quantity = Number(localQuantity.trim());
+
+		if (isNaN(quantity) || quantity <= 0) {
+			onError("Please enter a valid number of grams.");
+			return;
+		}
+
 		const payload = {
 			id: id,
 			carbsGrams: quantity,
@@ -119,20 +137,22 @@ const NewCarb = ({ carb, id }) => {
 		dispatch(quantityAdd(payload));
 	};
 
+	const handleDelete = () => {
+		dispatch(carbDelete(id));
+	};
+
 	return (
 		<div className={style.newCarb}>
 			<div className={style.cardHeader}>
-				<DeleteButton />
+				<DeleteButton onDelete={handleDelete} />
 				<p>{carb}</p>
 			</div>
 			<div className={style.cardContent}>
 				<p>Quantity</p>
 				<input
 					type="text"
-					value={quantity}
-					onChange={(e) => {
-						setQuantity(e.target.value);
-					}}
+					value={localQuantity}
+					onChange={handleChange}
 					onBlur={handleBlur}
 				></input>
 				<span>g</span>
@@ -140,12 +160,36 @@ const NewCarb = ({ carb, id }) => {
 		</div>
 	);
 };
-const AddMeal1 = ({ onClickNext }) => {
+const AddMeal1 = ({ onClickNext = () => {} }) => {
 	const [carbCards, setCarbCards] = useState([]);
+	const [errorMessage, setErrorMessage] = useState(null);
 
 	const reduxCarbObjects = useSelector((state) => {
 		return state.mealData.carbsData;
 	});
+
+	const handleError = (message) => {
+		setErrorMessage(message);
+	};
+
+	const handleClick = () => {
+		if (!carbCards.length) {
+			setErrorMessage("Please select at least one carb.");
+			return;
+		}
+
+		const hasMissingQuantities = carbCards.some((carbObject) => {
+			const quantity = carbObject.carbsGrams;
+			return !quantity || isNaN(quantity) || quantity <= 0;
+		});
+
+		if (hasMissingQuantities) {
+			setErrorMessage("Please enter a valid quantity for all carbs.");
+			return;
+		}
+		console.log("carbCards: ", carbCards);
+		onClickNext();
+	};
 
 	useEffect(() => {
 		// Whenever reduxCarbObjects changes, update carbCards state
@@ -167,13 +211,25 @@ const AddMeal1 = ({ onClickNext }) => {
 			<SearchBar />
 			<div className={style.resultsDiv}>
 				{carbCards.map((carbObject) => {
-					return <NewCarb key={carbObject.id} {...carbObject} />;
+					return (
+						<NewCarb
+							key={carbObject.id}
+							{...carbObject}
+							onError={handleError}
+						/>
+					);
 				})}
 			</div>
 
-			<button className={style.nextButton} onClick={onClickNext}>
+			<button className={style.nextButton} onClick={handleClick}>
 				Next
 			</button>
+			{errorMessage && (
+				<p className={style.errorMessage}>
+					<span>⚠️</span>
+					{errorMessage}
+				</p>
+			)}
 		</div>
 	);
 };

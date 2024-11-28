@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { carbAdd, quantityAdd } from "./mealData.action";
+import { carbAdd, quantityAdd, carbDelete } from "./mealData.action";
 
 type carbObjectFinal = {
 	id: string;
@@ -33,7 +33,15 @@ const mealDataReducer = createReducer(initialState, (builder) => {
 			if (targetCarb && targetCarb.carbsRate) {
 				targetCarb.carbsGrams = quantityObject.carbsGrams;
 				targetCarb.carbsResult = targetCarb.carbsGrams * targetCarb.carbsRate;
+				state.totalCarbs += targetCarb.carbsResult;
+				// Same as state.totalCarbs = state.totalCarbs + targetCarb.carbsResult;
 			}
+		})
+		.addCase(carbDelete, (state, action) => {
+			const carbId = action.payload;
+			state.carbsData = state.carbsData.filter((carbObject) => {
+				return carbObject.id !== carbId;
+			});
 		});
 });
 

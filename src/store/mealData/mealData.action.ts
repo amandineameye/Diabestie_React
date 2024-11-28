@@ -27,3 +27,5 @@ export const carbAdd = createAction("carb/add", (carbObject: CarbObjectNew) => {
 });
 
 export const quantityAdd = createAction<QuantityData>("carb/addQuantity");
+
+export const carbDelete = createAction<string>("carb/delete");

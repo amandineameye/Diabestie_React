@@ -2,7 +2,7 @@ import style from "./DeleteButton.module.css";
 import clsx from "clsx";
 import { useLocation } from "react-router-dom";
 
-const DeleteButton = ({ onDeleteAction = () => {} }) => {
+const DeleteButton = ({ onDelete = () => {} }) => {
 	const pathname = useLocation().pathname;
 
 	const buttonClassName = clsx(
@@ -11,7 +11,7 @@ const DeleteButton = ({ onDeleteAction = () => {} }) => {
 	);
 
 	return (
-		<button onClick={onDeleteAction} className={buttonClassName}>
+		<button onClick={onDelete} className={buttonClassName}>
 			🗑️
 		</button>
 	);
