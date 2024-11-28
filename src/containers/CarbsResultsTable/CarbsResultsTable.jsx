@@ -1,4 +1,5 @@
 import style from "./CarbsResultsTable.module.css";
+import { useSelector } from "react-redux";
 
 const Thead = () => {
 	return (
@@ -13,18 +14,24 @@ const Thead = () => {
 	);
 };
 
-const CarbResultsRow = () => {
+const CarbResultsRow = ({ carb, carbsRate, carbsGrams, carbsResult }) => {
 	return (
 		<tr>
-			<th>White bread</th>
-			<td>130</td>
-			<td>49</td>
-			<td>65.7</td>
+			<th className={style.carbName}>{carb}</th>
+			<td>{parseInt(carbsGrams)}</td>
+			<td>{parseInt(carbsRate * 100)}</td>
+			<td>
+				{carbsResult % 1 === 0
+					? carbsResult.toFixed(0)
+					: carbsResult.toFixed(1)}
+			</td>
 		</tr>
 	);
 };
 
 const Tfoot = () => {
+	const totalCarbs = useSelector((state) => state.mealData.totalCarbs);
+
 	return (
 		<tfoot>
 			<tr>
@@ -32,7 +39,7 @@ const Tfoot = () => {
 				<td></td>
 				<td></td>
 				<td>
-					<p>69</p>
+					<p>{totalCarbs}</p>
 				</td>
 			</tr>
 		</tfoot>
@@ -40,13 +47,16 @@ const Tfoot = () => {
 };
 
 const CarbsResultsTable = () => {
+	const carbsObjectsArray = useSelector((state) => state.mealData.carbsData);
+
 	return (
 		<table className={style.table}>
 			<Thead />
 			<tbody>
-				<CarbResultsRow />
-				<CarbResultsRow />
-				<CarbResultsRow />
+				{carbsObjectsArray &&
+					carbsObjectsArray.map((carbObject) => {
+						return <CarbResultsRow key={carbObject.id} {...carbObject} />;
+					})}
 			</tbody>
 			<Tfoot />
 		</table>

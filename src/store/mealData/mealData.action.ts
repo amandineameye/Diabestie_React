@@ -17,6 +17,8 @@ type QuantityData = {
 	carbsGrams: number;
 };
 
+type TagName = "firstMeal" | "snack" | "wasActiveBefore";
+
 export const carbAdd = createAction("carb/add", (carbObject: CarbObjectNew) => {
 	const payload: CarbObjectWithoutQuantity = {
 		...carbObject,
@@ -29,3 +31,5 @@ export const carbAdd = createAction("carb/add", (carbObject: CarbObjectNew) => {
 export const quantityAdd = createAction<QuantityData>("carb/addQuantity");
 
 export const carbDelete = createAction<string>("carb/delete");
+
+export const tagAdd = createAction<TagName>("meal/addTag");

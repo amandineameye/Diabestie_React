@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { carbAdd, quantityAdd, carbDelete } from "./mealData.action";
+import { carbAdd, quantityAdd, carbDelete, tagAdd } from "./mealData.action";
 
-type carbObjectFinal = {
+type CarbObjectFinal = {
 	id: string;
 	carb: string;
 	carbsRate: number;
@@ -9,14 +9,28 @@ type carbObjectFinal = {
 	carbsResult: number;
 };
 // Define carbsDataReducerState as an array of optional carbObjectFinal properties
-type mealDataReducerState = {
+type MealDataReducerState = {
 	totalCarbs: number;
-	carbsData: Array<Partial<carbObjectFinal>>;
+	carbsData: Array<Partial<CarbObjectFinal>>;
+	tags: TagsObject;
+	time: Date | undefined;
 };
 
-const initialState: mealDataReducerState = {
+type TagsObject = {
+	firstMeal: boolean;
+	snack: boolean;
+	wasActiveBefore: boolean;
+};
+
+const initialState: MealDataReducerState = {
 	totalCarbs: 0,
 	carbsData: [],
+	tags: {
+		firstMeal: false,
+		snack: false,
+		wasActiveBefore: false,
+	},
+	time: undefined,
 };
 
 const mealDataReducer = createReducer(initialState, (builder) => {
@@ -39,9 +53,20 @@ const mealDataReducer = createReducer(initialState, (builder) => {
 		})
 		.addCase(carbDelete, (state, action) => {
 			const carbId = action.payload;
+			const deletedCarbObject = state.carbsData.find((carbObject) => {
+				return carbObject.id === carbId;
+			});
+			if (deletedCarbObject && deletedCarbObject.carbsResult !== undefined) {
+				state.totalCarbs = state.totalCarbs - deletedCarbObject.carbsResult;
+			}
+
 			state.carbsData = state.carbsData.filter((carbObject) => {
 				return carbObject.id !== carbId;
 			});
+		})
+		.addCase(tagAdd, (state, action) => {
+			const tagName = action.payload;
+			state.tags[tagName] = state.tags[tagName] === true ? false : true;
 		});
 });
 

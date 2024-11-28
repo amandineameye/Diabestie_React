@@ -115,6 +115,13 @@
 					border: 1px solid var(--boxesStroke);
 					background-color: var(--inputBackground);
 				}
+				input::-webkit-outer-spin-button,
+				input::-webkit-inner-spin-button {
+					-webkit-appearance: none;
+				}
+				input[type="number"] {
+					-moz-appearance: textfield;
+				}
 			}
 		}
 	}

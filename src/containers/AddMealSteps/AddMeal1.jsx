@@ -150,7 +150,7 @@ const NewCarb = ({ carb, id, carbsGrams, onError = () => {} }) => {
 			<div className={style.cardContent}>
 				<p>Quantity</p>
 				<input
-					type="text"
+					type="number"
 					value={localQuantity}
 					onChange={handleChange}
 					onBlur={handleBlur}

@@ -4,7 +4,7 @@ import TagsChoice from "../TagsChoice/TagsChoice";
 import CarbsResultsTable from "../CarbsResultsTable/CarbsResultsTable";
 import BolusCalcForm from "../BolusCalcForm/BolusCalcForm";
 
-const AddMeal2 = ({ onClickAddMeal }) => {
+const AddMeal2 = ({ onClickAddMeal = () => {} }) => {
 	return (
 		<div className={style.mainContentDiv}>
 			<div className={style.titlesDiv}>
