@@ -3,7 +3,14 @@ import style from "./MealBCC.module.css";
 import clsx from "clsx";
 import { useLocation } from "react-router-dom";
 
-const MealBCC = ({ carbsGrams, bolus, change }) => {
+const MealBCC = ({
+	carbsGrams,
+	bolus,
+	change,
+	firstMeal,
+	snack,
+	wasActive,
+}) => {
 	let pathname = useLocation().pathname;
 
 	const divClassName = clsx(
@@ -28,9 +35,9 @@ const MealBCC = ({ carbsGrams, bolus, change }) => {
 			</div>
 			{(pathname === "/history" || pathname === "/addMeal") && (
 				<div className={style.tagsDiv}>
-					<CoffeeIcon />
-					<div>🍩</div>
-					<div>⛹🏽‍♂️</div>
+					{firstMeal && <CoffeeIcon />}
+					{snack && <div>🍩</div>}
+					{wasActive && <div>⛹🏽‍♂️</div>}
 				</div>
 			)}
 		</div>
