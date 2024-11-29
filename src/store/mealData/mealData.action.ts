@@ -43,3 +43,5 @@ export const correctionBolusAdd = createAction<number>(
 export const mealBolusAdd = createAction<number>("meal/addMealBolus");
 
 export const totalBolusAdd = createAction<number>("meal/addBolus");
+
+export const mealClear = createAction("meal/clearMeal");

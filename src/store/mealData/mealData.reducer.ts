@@ -8,6 +8,7 @@ import {
 	totalBolusAdd,
 	correctionBolusAdd,
 	mealBolusAdd,
+	mealClear,
 } from "./mealData.action";
 
 type CarbObjectFinal = {
@@ -111,6 +112,9 @@ const mealDataReducer = createReducer(initialState, (builder) => {
 		.addCase(mealBolusAdd, (state, action) => {
 			const mealBolus = action.payload;
 			state.bolus.mealBolus = mealBolus;
+		})
+		.addCase(mealClear, () => {
+			return initialState;
 		});
 });
 

@@ -3,14 +3,44 @@ import MealBCC from "../../components/MealBCC/MealBCC";
 import TagsChoice from "../TagsChoice/TagsChoice";
 import CarbsResultsTable from "../CarbsResultsTable/CarbsResultsTable";
 import BolusCalcForm from "../BolusCalcForm/BolusCalcForm";
-import { postAndFetchSimilarMeals } from "../../services/addMeal2.service.js";
+import {
+	postAndFetchSimilarMeals,
+	patchNewMeal,
+} from "../../services/addMeal2.service.js";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { mealClear } from "../../store/mealData/mealData.action.ts";
 
 const AddMeal2 = ({ onClickAddMeal = () => {} }) => {
+	const dispatch = useDispatch();
 	const [similarMeals, setSimilarMeals] = useState([]);
 
 	const totalCarbs = useSelector((state) => state.mealData.totalCarbs);
+
+	const newMeal = useSelector((state) => state.mealData);
+
+	const handleButtonClick = async () => {
+		if (!newMeal.bloodSugarBefore || !newMeal.bolus.totalBolus) {
+			console.log("Missing inputs");
+			return;
+		}
+		try {
+			const newMealFinalObject = {
+				totalCarbs: newMeal.totalCarbs,
+				totalBolus: newMeal.bolus.totalBolus,
+				bloodSugarBefore: newMeal.bloodSugarBefore,
+				firstMeal: newMeal.tags.firstMeal,
+				snack: newMeal.tags.snack,
+				wasActiveBefore: newMeal.tags.wasActiveBefore,
+			};
+			const response = await patchNewMeal(newMealFinalObject);
+			console.log(response.data.message);
+			dispatch(mealClear());
+			onClickAddMeal();
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	useEffect(() => {
 		const fetchSimilarMeals = async () => {
@@ -42,19 +72,20 @@ const AddMeal2 = ({ onClickAddMeal = () => {} }) => {
 					<BolusCalcForm />
 				</div>
 
-				{similarMeals.map((meal, index) => {
-					return (
-						<div className={`style.previousMealsDiv${index}`}>
-							<MealBCC key={index} {...meal} />
-						</div>
-					);
-				})}
+				{similarMeals.length &&
+					similarMeals.map((meal, index) => {
+						return (
+							<div key={index} className={style.previousMealDiv}>
+								<MealBCC {...meal} />
+							</div>
+						);
+					})}
 
 				<div className={style.tagsDiv}>
 					<TagsChoice />
 				</div>
 			</div>
-			<button className={style.addMealButton} onClick={onClickAddMeal}>
+			<button className={style.addMealButton} onClick={handleButtonClick}>
 				Add meal
 			</button>
 		</div>

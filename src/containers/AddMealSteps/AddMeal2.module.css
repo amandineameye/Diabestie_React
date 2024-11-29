@@ -28,22 +28,22 @@
 		}
 
 		.carbsTableDiv {
+			grid-row-start: 1;
+			grid-row-end: 3;
+		}
+		.bolusCalcDiv {
 			grid-row-start: 3;
 			grid-row-end: 5;
 		}
-		.bolusCalcDiv {
-			grid-row-start: 1;
-			grid-row-end: 3;
-		}
-		.previousMealsDiv0 {
+		.previousMealsDiv:nth-child(3) {
 			grid-row-start: 1;
 			grid-row-end: 2;
 		}
-		.previousMealsDiv1 {
+		.previousMealsDiv:nth-child(4) {
 			grid-row-start: 2;
 			grid-row-end: 3;
 		}
-		.previousMealsDiv2 {
+		.previousMealsDiv:nth-child(5) {
 			grid-row-start: 3;
 			grid-row-end: 4;
 		}
