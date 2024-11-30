@@ -2,7 +2,12 @@ import axios from "axios";
 
 const baseUrl = "http://localhost:8000/general/";
 
-export const fetchUserNames = async () => {
+type NamesObject = {
+	firstName: string;
+	username: string;
+};
+
+export const fetchUserNames = async (): Promise<NamesObject> => {
 	const token = localStorage.getItem("authToken");
 	const headers = {
 		headers: {
@@ -11,5 +16,5 @@ export const fetchUserNames = async () => {
 	};
 	const response = await axios.get(baseUrl + "getUserNames", headers);
 	const data = response.data;
-	return data;
+	return data as NamesObject;
 };

@@ -1,13 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchUserData } from "../../services/userData.service";
 import { fetchUserNames } from "../../services/general.service";
 
-export const getOneUserData = createAsyncThunk("userData/get", async () => {
-	const result = await fetchUserData();
-	return result;
-});
+type NamesObject = {
+	firstName: string;
+	username: string;
+};
 
-export const getUserNames = createAsyncThunk("userNames/get", async () => {
-	const namesObject = await fetchUserNames();
-	return namesObject;
-});
+export const getUserNames = createAsyncThunk(
+	"userNames/get",
+	async (): Promise<NamesObject> => {
+		const namesObject: NamesObject = await fetchUserNames();
+		return namesObject;
+	}
+);

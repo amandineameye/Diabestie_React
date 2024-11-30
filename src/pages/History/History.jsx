@@ -44,6 +44,8 @@ const MealsDiv = ({
 }) => {
 	const [meals, setMeals] = useState([]);
 
+	const navigate = useNavigate();
+
 	useEffect(() => {
 		const fetchMeals = async () => {
 			try {

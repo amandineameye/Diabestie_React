@@ -9,5 +9,5 @@
 		"strict": true,
 		"skipLibCheck": true
 	},
-	"include": ["src/**/*.ts", "src/**/*.tsx", "src/services/userData.service.ts"]
+	"include": ["src/**/*.ts", "src/**/*.tsx"]
 }

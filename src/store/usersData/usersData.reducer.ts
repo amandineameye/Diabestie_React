@@ -1,6 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { getOneUserData, getUserNames } from "./usersData.action";
-import { UserData } from "../../@types/usersData";
+import { getUserNames } from "./usersData.action";
 
 type UserNames = {
 	firstName: string;
