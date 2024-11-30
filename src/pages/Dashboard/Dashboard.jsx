@@ -11,7 +11,6 @@ import {
 	patchNote,
 	fetchMealsSummary,
 } from "../../services/dashboard.service.js";
-import { getUserNames } from "../../store/usersData/usersData.action.ts";
 
 const QuickNote = () => {
 	const [note, setNote] = useState("");
@@ -22,11 +21,15 @@ const QuickNote = () => {
 	};
 
 	const handleBlur = async () => {
+		const isTokenValid = checkTokenPresentAndUnexpired();
+		if (!isTokenValid) navigate("/login");
 		await patchNote(note);
 	};
 
 	useEffect(() => {
 		const getNote = async () => {
+			const isTokenValid = checkTokenPresentAndUnexpired();
+			if (!isTokenValid) navigate("/login");
 			setLoading(true);
 			const fetchedNote = await fetchNote();
 			setNote(fetchedNote);
@@ -57,6 +60,8 @@ const MostRecentMeals = () => {
 
 	useEffect(() => {
 		const getMeals = async () => {
+			const isTokenValid = checkTokenPresentAndUnexpired();
+			if (!isTokenValid) navigate("/login");
 			const fetchedMeals = await fetchMealsSummary();
 
 			const processedMeals = fetchedMeals.map((meal) => {
@@ -89,9 +94,7 @@ const Dashboard = () => {
 
 	useEffect(() => {
 		const isTokenValid = checkTokenPresentAndUnexpired();
-		if (!isTokenValid) {
-			navigate("/login");
-		}
+		if (!isTokenValid) navigate("/login");
 	}, [navigate]);
 
 	return (

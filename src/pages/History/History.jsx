@@ -3,6 +3,7 @@ import MealBCC from "../../components/MealBCC/MealBCC";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getFilteredMeals } from "../../services/history.service.js";
+import { checkTokenPresentAndUnexpired } from "../../tools/authTools.js";
 
 const SelectsDiv = ({ onFilterChange = () => {} }) => {
 	const handleSelectChange = (e) => {
@@ -46,6 +47,8 @@ const MealsDiv = ({
 	useEffect(() => {
 		const fetchMeals = async () => {
 			try {
+				const isTokenValid = checkTokenPresentAndUnexpired();
+				if (!isTokenValid) navigate("/login");
 				const data = await getFilteredMeals({
 					page,
 					unitsTarget,
@@ -96,6 +99,8 @@ const History = () => {
 	};
 
 	const handleFilter = (filter, value) => {
+		const isTokenValid = checkTokenPresentAndUnexpired();
+		if (!isTokenValid) navigate("/login");
 		setFiltersObject((prevObject) => {
 			return { ...prevObject, [filter]: value };
 		});
@@ -116,9 +121,8 @@ const History = () => {
 	};
 
 	useEffect(() => {
-		if (localStorage.getItem("authToken") === null) {
-			navigate("/login");
-		}
+		const isTokenValid = checkTokenPresentAndUnexpired();
+		if (!isTokenValid) navigate("/login");
 	}, [navigate]);
 	return (
 		<main className="connectedMain">

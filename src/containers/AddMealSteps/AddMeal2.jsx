@@ -10,9 +10,13 @@ import {
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { mealClear } from "../../store/mealData/mealData.action.ts";
+import { checkTokenPresentAndUnexpired } from "../../tools/authTools.js";
+import { useNavigate } from "react-router-dom";
 
 const AddMeal2 = ({ onClickAddMeal = () => {} }) => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
 	const [similarMeals, setSimilarMeals] = useState([]);
 
 	const totalCarbs = useSelector((state) => state.mealData.totalCarbs);
@@ -20,6 +24,8 @@ const AddMeal2 = ({ onClickAddMeal = () => {} }) => {
 	const newMeal = useSelector((state) => state.mealData);
 
 	const handleButtonClick = async () => {
+		const isTokenValid = checkTokenPresentAndUnexpired();
+		if (!isTokenValid) navigate("/login");
 		if (!newMeal.bloodSugarBefore || !newMeal.bolus.totalBolus) {
 			console.log("Missing inputs");
 			return;
@@ -43,6 +49,13 @@ const AddMeal2 = ({ onClickAddMeal = () => {} }) => {
 	};
 
 	useEffect(() => {
+		const isTokenValid = checkTokenPresentAndUnexpired();
+		if (!isTokenValid) navigate("/login");
+	}, [navigate]);
+
+	useEffect(() => {
+		const isTokenValid = checkTokenPresentAndUnexpired();
+		if (!isTokenValid) navigate("/login");
 		const fetchSimilarMeals = async () => {
 			if (!totalCarbs) {
 				console.log("No total carbs");

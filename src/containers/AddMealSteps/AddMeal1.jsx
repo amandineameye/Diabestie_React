@@ -8,6 +8,8 @@ import {
 	quantityAdd,
 	carbDelete,
 } from "../../store/mealData/mealData.action.ts";
+import { checkTokenPresentAndUnexpired } from "../../tools/authTools.js";
+import { useNavigate } from "react-router-dom";
 
 const DropDown = ({ options, onSelect = () => {} }) => {
 	const dispatch = useDispatch();
@@ -42,6 +44,7 @@ const SearchBar = () => {
 	const [inputText, setInputText] = useState("");
 	const [debouncedText, setDebouncedText] = useState("");
 	const [carbsOptions, setCarbsOptions] = useState([]);
+	const navigate = useNavigate();
 
 	const clearSearchBar = () => {
 		setInputText("");
@@ -79,13 +82,10 @@ const SearchBar = () => {
 
 		const searchCarbs = async () => {
 			try {
+				const isTokenValid = checkTokenPresentAndUnexpired();
+				if (!isTokenValid) navigate("/login");
 				const response = await postAndFetchCarbsOptions(debouncedText);
 				console.log("Matching carbs: ", response.data.matchingCarbs);
-				// const carbsNamesArray = response.data.matchingCarbs.map(
-				// 	(carbObject) => {
-				// 		return carbObject.carb;
-				// 	}
-				// );
 				setCarbsOptions(response.data.matchingCarbs);
 			} catch (error) {
 				console.log(error);
@@ -168,6 +168,7 @@ const NewCarb = ({ carb, id, carbsGrams, onError = () => {} }) => {
 const AddMeal1 = ({ onClickNext = () => {} }) => {
 	const [carbCards, setCarbCards] = useState([]);
 	const [errorMessage, setErrorMessage] = useState(null);
+	const navigate = useNavigate();
 
 	const reduxCarbObjects = useSelector((state) => {
 		return state.mealData.carbsData;
@@ -195,6 +196,11 @@ const AddMeal1 = ({ onClickNext = () => {} }) => {
 		console.log("carbCards: ", carbCards);
 		onClickNext();
 	};
+
+	useEffect(() => {
+		const isTokenValid = checkTokenPresentAndUnexpired();
+		if (!isTokenValid) navigate("/login");
+	}, [navigate]);
 
 	useEffect(() => {
 		// Whenever reduxCarbObjects changes, update carbCards state
