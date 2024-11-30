@@ -1,21 +1,30 @@
 import style from "./History.module.css";
 import MealBCC from "../../components/MealBCC/MealBCC";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getFilteredMeals } from "../../services/history.service.js";
 
-let service = "history";
+const SelectsDiv = ({ onFilterChange = () => {} }) => {
+	const handleSelectChange = (e) => {
+		onFilterChange(e.target.name, e.target.value);
+	};
 
-const SelectsDiv = () => {
 	return (
 		<div className={style.selectsDiv}>
-			<select name="carbsInterval" id="carbsInterval">
-				<option value="mostRecent">Most recent meals</option>
+			<select name="unitsTarget" id="unitsTarget" onChange={handleSelectChange}>
+				<option value="undefined">Most recent meals</option>
 				<option value="tooMany">Too many units</option>
 				<option value="right">Right units</option>
 				<option value="tooFew">Too few units</option>
 			</select>
-			<select name="mealsCategory" id="mealsCategory">
-				<option value="all">All grams intervals</option>
+			<select name="tag" id="tag" onChange={handleSelectChange}>
+				<option value="undefined">All tags</option>
+				<option value="firstMeal">First meals</option>
+				<option value="snack">Snacks</option>
+				<option value="wasActive">Around physical activity</option>
+			</select>
+			<select name="gramsTarget" id="gramsTarget" onChange={handleSelectChange}>
+				<option value="undefined">All grams intervals</option>
 				<option value="0-30">0 - 30 grams</option>
 				<option value="31-60">31 - 60 grams</option>
 				<option value="61-90">61 - 90 grams</option>
@@ -25,39 +34,86 @@ const SelectsDiv = () => {
 	);
 };
 
-const CheckboxesDiv = () => {
-	return (
-		<div className={style.checkboxesDiv}>
-			<input type="checkbox" name="firstMeals" id="firstMeals" defaultChecked />
-			<label htmlFor="firstMeals">First meals</label>
-			<input type="checkbox" name="snacks" id="snacks" defaultChecked />
-			<label htmlFor="snacks">Snacks</label>
-			<input
-				type="checkbox"
-				name="physicalActivity"
-				id="physicalActivity"
-				defaultChecked
-			/>
-			<label htmlFor="physicalActivity">Physical activity</label>
-		</div>
-	);
-};
+const MealsDiv = ({
+	page = 1,
+	unitsTarget = undefined,
+	gramsTarget = undefined,
+	tag = undefined,
+	onSetPageMax = () => {},
+}) => {
+	const [meals, setMeals] = useState([]);
 
-const MealsDiv = () => {
+	useEffect(() => {
+		const fetchMeals = async () => {
+			try {
+				const data = await getFilteredMeals({
+					page,
+					unitsTarget,
+					gramsTarget,
+					tag,
+				});
+				console.log("Fetched meals: ", data.meals);
+				console.log("Meals count: ", data.count);
+				setMeals(data.meals);
+				const lastPage = Math.ceil(parseInt(data.count) / 6);
+				console.log("Last page: ", lastPage);
+				onSetPageMax(lastPage);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		fetchMeals();
+	}, [page, unitsTarget, gramsTarget, tag]);
+
 	return (
 		<div className={style.mealsDiv}>
-			<MealBCC service={service} className={style.row1} />
-			<MealBCC service={service} className={style.row2} />
-			<MealBCC service={service} className={style.row3} />
-			<MealBCC service={service} className={style.row4} />
-			<MealBCC service={service} className={style.row5} />
-			<MealBCC service={service} className={style.row6} />
+			{meals &&
+				meals.map((meal, index) => {
+					return (
+						<MealBCC
+							key={meal.id}
+							{...meal}
+							className={`style.row${index + 1}`}
+						/>
+					);
+				})}
 		</div>
 	);
 };
 
 const History = () => {
 	const navigate = useNavigate();
+	const [page, setPage] = useState(1);
+	const [pageMax, setPageMax] = useState(1);
+	const [filtersObject, setFiltersObject] = useState({
+		tag: undefined,
+		unitsTarget: undefined,
+		gramsTarget: undefined,
+	});
+
+	const getPageMax = (page) => {
+		setPageMax(page);
+	};
+
+	const handleFilter = (filter, value) => {
+		setFiltersObject((prevObject) => {
+			return { ...prevObject, [filter]: value };
+		});
+	};
+
+	const handleNextClick = () => {
+		setPage((prevPage) => {
+			if (prevPage === pageMax) return prevPage;
+			return prevPage + 1;
+		});
+	};
+
+	const handlePreviousClick = () => {
+		setPage((prevPage) => {
+			if (prevPage === 1) return 1;
+			return prevPage - 1;
+		});
+	};
 
 	useEffect(() => {
 		if (localStorage.getItem("authToken") === null) {
@@ -69,11 +125,19 @@ const History = () => {
 			<div className={style.mainContentDiv}>
 				<h1>History of meals</h1>
 				<div className={style.filtersDiv}>
-					<SelectsDiv />
-					<CheckboxesDiv />
+					<SelectsDiv onFilterChange={handleFilter} />
 				</div>
-				<MealsDiv />
-				<button className={style.viewMoreButton}>View more</button>
+				<MealsDiv
+					page={page}
+					tag={filtersObject.tag}
+					unitsTarget={filtersObject.unitsTarget}
+					gramsTarget={filtersObject.gramsTarget}
+					onSetPageMax={getPageMax}
+				/>
+				<div className={style.buttonsDiv}>
+					<button onClick={handlePreviousClick}>Previous</button>
+					<button onClick={handleNextClick}>Next</button>
+				</div>
 			</div>
 		</main>
 	);
