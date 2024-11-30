@@ -55,28 +55,7 @@ const QuickNote = () => {
 	);
 };
 
-const MostRecentMeals = () => {
-	const [meals, setMeals] = useState([]);
-
-	useEffect(() => {
-		const getMeals = async () => {
-			const isTokenValid = checkTokenPresentAndUnexpired();
-			if (!isTokenValid) navigate("/login");
-			const fetchedMeals = await fetchMealsSummary();
-
-			const processedMeals = fetchedMeals.map((meal) => {
-				return {
-					id: meal.id,
-					carbsGrams: meal.carbsGrams,
-					bolus: meal.bolus,
-					change: meal.bloodSugarAfter - meal.bloodSugarBefore,
-				};
-			});
-			setMeals(processedMeals);
-		};
-		getMeals();
-	}, []);
-
+const MostRecentMeals = ({ meals }) => {
 	return (
 		<div className={style.data}>
 			<h2>Most recent meals</h2>
@@ -91,6 +70,29 @@ const MostRecentMeals = () => {
 
 const Dashboard = () => {
 	const navigate = useNavigate();
+	const [meals, setMeals] = useState([]);
+
+	const handleNewCompleteMeal = async () => {
+		await refreshMeals(); // Fetch fresh meals after completing an incomplete meal
+	};
+
+	const refreshMeals = async () => {
+		const isTokenValid = checkTokenPresentAndUnexpired();
+		if (!isTokenValid) navigate("/login");
+
+		const fetchedMeals = await fetchMealsSummary();
+		const processedMeals = fetchedMeals.map((meal) => ({
+			id: meal.id,
+			carbsGrams: meal.carbsGrams,
+			bolus: meal.bolus,
+			change: meal.bloodSugarAfter - meal.bloodSugarBefore,
+		}));
+		setMeals(processedMeals);
+	};
+
+	useEffect(() => {
+		refreshMeals();
+	}, []);
 
 	useEffect(() => {
 		const isTokenValid = checkTokenPresentAndUnexpired();
@@ -101,9 +103,12 @@ const Dashboard = () => {
 		<main className="connectedMain">
 			<GreetingsAndDate />
 			<div className={style.content}>
-				<IncompleteMeals className={style.incompleteMeals} />
+				<IncompleteMeals
+					className={style.incompleteMeals}
+					onNewCompleteMeal={handleNewCompleteMeal}
+				/>
 				<QuickNote />
-				<MostRecentMeals />
+				<MostRecentMeals meals={meals} />
 			</div>
 		</main>
 	);

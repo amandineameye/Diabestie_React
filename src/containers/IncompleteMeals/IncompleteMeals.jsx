@@ -35,7 +35,7 @@ const Table = ({ meals, refreshMeals }) => {
 	);
 };
 
-const IncompleteMeals = ({ className = "" }) => {
+const IncompleteMeals = ({ className = "", onNewCompleteMeal = () => {} }) => {
 	const [meals, setMeals] = useState([]);
 
 	const getMeals = async () => {
@@ -62,6 +62,9 @@ const IncompleteMeals = ({ className = "" }) => {
 		try {
 			const processedMeals = await getMeals();
 			console.log("Refreshed meals:", processedMeals);
+			if (processedMeals.length < meals.length) {
+				onNewCompleteMeal();
+			}
 		} catch (error) {
 			console.log("Could not refresh meals");
 		}

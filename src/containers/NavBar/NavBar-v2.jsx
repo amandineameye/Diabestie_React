@@ -1,7 +1,10 @@
 import style from "./NavBar.module.css";
 import logo from "../../assets/blood.png";
-import { Link, NavLink, useRoutes } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { checkTokenPresentAndUnexpired } from "../../tools/authTools";
 
 const LinkList = () => {
 	return (
@@ -40,7 +43,20 @@ const LinkList = () => {
 };
 
 const NavBar = () => {
+	const navigate = useNavigate();
 	const username = useSelector((state) => state.userData?.data?.username || "");
+
+	const handleLogOutClick = () => {
+		localStorage.removeItem("authToken");
+		navigate("/login");
+	};
+
+	useEffect(() => {
+		const isTokenValid = checkTokenPresentAndUnexpired();
+		if (!isTokenValid) {
+			navigate("/login");
+		}
+	}, [navigate]);
 
 	return (
 		<nav>
@@ -52,7 +68,9 @@ const NavBar = () => {
 			<p className={style.account}>
 				<span className={style.userIcon}>👤</span>
 				{username}
-				<span className={style.logOutIcon}>🏃🏻‍♂️‍➡️</span>
+				<span onClick={handleLogOutClick} className={style.logOutIcon}>
+					🏃🏻‍♂️‍➡️
+				</span>
 			</p>
 		</nav>
 	);
