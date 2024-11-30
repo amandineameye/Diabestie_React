@@ -26,6 +26,13 @@ const QuickNote = () => {
 		await patchNote(note);
 	};
 
+	const handleDelete = async () => {
+		const isTokenValid = checkTokenPresentAndUnexpired();
+		if (!isTokenValid) navigate("/login");
+		setNote("");
+		await patchNote("");
+	};
+
 	useEffect(() => {
 		const getNote = async () => {
 			const isTokenValid = checkTokenPresentAndUnexpired();
@@ -50,7 +57,7 @@ const QuickNote = () => {
 				onBlur={handleBlur}
 				disabled={isLoading}
 			></textarea>
-			<DeleteButton />
+			<DeleteButton onDelete={handleDelete} />
 		</div>
 	);
 };
