@@ -2,6 +2,9 @@ import style from "./TagsChoice.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { tagAdd } from "../../store/mealData/mealData.action.ts";
+import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
+import CookieOutlinedIcon from "@mui/icons-material/CookieOutlined";
+import FreeBreakfastOutlinedIcon from "@mui/icons-material/FreeBreakfastOutlined";
 
 const TagsChoice = () => {
 	const [activeItems, setActiveItems] = useState({
@@ -34,7 +37,7 @@ const TagsChoice = () => {
 					onClick={() => handleClick("firstMeal")}
 					className={activeItems.firstMeal && style.active}
 				>
-					☕️
+					<FreeBreakfastOutlinedIcon />
 				</div>
 			</div>
 			<div className={style.cell}>
@@ -43,7 +46,7 @@ const TagsChoice = () => {
 					onClick={() => handleClick("snack")}
 					className={activeItems.snack && style.active}
 				>
-					🍩
+					<CookieOutlinedIcon />
 				</div>
 			</div>
 			<div className={style.cell}>
@@ -52,7 +55,7 @@ const TagsChoice = () => {
 					onClick={() => handleClick("wasActiveBefore")}
 					className={activeItems.wasActiveBefore && style.active}
 				>
-					⛹🏽‍♂️
+					<DirectionsRunIcon />
 				</div>
 			</div>
 		</div>

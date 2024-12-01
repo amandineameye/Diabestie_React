@@ -1,11 +1,36 @@
+.contentDiv,
+.contentDivWithoutCards {
+	display: flex;
+	transition: justify-content 0.5s ease;
+}
+
+.contentDiv {
+	justify-content: space-evenly;
+}
+
+.contentDivWithoutCards {
+	justify-content: center;
+}
+
 .contentDiv {
 	height: 100%;
 	width: 100%;
 
-	display: flex;
+	/* display: flex; */
 	flex-direction: column;
-	justify-content: space-evenly;
+	/* justify-content: space-evenly; */
 	align-items: center;
+
+	&.contentDivWithoutCards {
+		/* justify-content: center; */
+
+		.titlesDiv {
+			margin-bottom: 5rem;
+		}
+		.newSelect {
+			margin-bottom: 5rem;
+		}
+	}
 
 	.titlesDiv {
 		display: flex;
@@ -150,5 +175,7 @@
 		font-weight: 500;
 		display: flex;
 		gap: 1rem;
+		justify-content: center;
+		align-items: center;
 	}
 }

@@ -29,12 +29,20 @@ nav {
 		gap: 1rem;
 		color: var(--lighterFont);
 
-		span {
-			margin-right: 1.2rem;
+		li {
+			display: flex;
+			align-items: end;
 		}
 
 		a {
-			display: block;
+			span {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			display: flex;
+			align-items: center;
+			gap: 0.7rem;
 			padding: 1.2rem 1.5rem;
 			width: 100%;
 			border-radius: 28px;

@@ -2,6 +2,10 @@
 	display: flex;
 	justify-content: center;
 
+	.icon {
+		font-size: 1.1rem;
+	}
+
 	.cell {
 		display: flex;
 		flex-direction: column;
@@ -54,7 +58,6 @@
 	border-radius: 10px;
 	position: relative;
 
-
 	.tagsDiv {
 		height: 100%;
 		width: 2rem;
@@ -75,7 +78,8 @@
 			align-items: center;
 			border: 1px solid var(--lighterFont);
 		}
-}}
+	}
+}
 
 .historyRow {
 	gap: 3.3rem;

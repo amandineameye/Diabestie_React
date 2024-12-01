@@ -5,8 +5,18 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { checkTokenPresentAndUnexpired } from "../../tools/authTools";
+import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
+import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
+import FlatwareOutlinedIcon from "@mui/icons-material/FlatwareOutlined";
+import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
+import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
+import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
+import PersonIcon from "@mui/icons-material/Person";
+import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
+import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 
 const LinkList = () => {
+	const iconsSize = "1.2rem";
 	return (
 		<ul className={style.linksList}>
 			<li>
@@ -14,7 +24,10 @@ const LinkList = () => {
 					to="/"
 					className={({ isActive }) => (isActive ? style.active : "")}
 				>
-					<span>🏠</span>Dashboard
+					<span>
+						<SpaceDashboardIcon sx={{ fontSize: iconsSize }} />
+					</span>
+					Dashboard
 				</NavLink>
 			</li>
 			<li>
@@ -22,7 +35,7 @@ const LinkList = () => {
 					to="/addMeal"
 					className={({ isActive }) => (isActive ? style.active : "")}
 				>
-					<span>🍱</span>New meal
+					<AddCircleOutlinedIcon sx={{ fontSize: iconsSize }} /> New meal
 				</NavLink>
 			</li>
 			<li>
@@ -30,12 +43,12 @@ const LinkList = () => {
 					to="/history"
 					className={({ isActive }) => (isActive ? style.active : "")}
 				>
-					<span>🕣</span>Meals history
+					<AccessTimeFilledIcon sx={{ fontSize: iconsSize }} /> Meals history
 				</NavLink>
 			</li>
 			<li>
 				<Link to="/">
-					<span>📉</span>Graphs
+					<BarChartOutlinedIcon sx={{ fontSize: iconsSize }} /> Graphs
 				</Link>
 			</li>
 		</ul>
@@ -66,11 +79,12 @@ const NavBar = () => {
 			</p>
 			<LinkList />
 			<p className={style.account}>
-				<span className={style.userIcon}>👤</span>
+				<PersonIcon className={style.userIcon} />
 				{username}
-				<span onClick={handleLogOutClick} className={style.logOutIcon}>
-					🏃🏻‍♂️‍➡️
-				</span>
+				<ExitToAppOutlinedIcon
+					onClick={handleLogOutClick}
+					className={style.logOutIcon}
+				/>
 			</p>
 		</nav>
 	);

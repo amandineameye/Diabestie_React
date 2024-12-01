@@ -35,7 +35,7 @@ const Tfoot = () => {
 				<td></td>
 				<td></td>
 				<td>
-					<p>{totalCarbs}</p>
+					<p>{Math.round(totalCarbs)}</p>
 				</td>
 			</tr>
 		</tfoot>

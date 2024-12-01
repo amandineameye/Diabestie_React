@@ -47,7 +47,10 @@ const BolusCalcForm = () => {
 	};
 
 	useEffect(() => {
-		if (bolusObject.correctionBolus && bolusObject.mealBolus) {
+		if (
+			(bolusObject.correctionBolus || bolusObject.correctionBolus === 0) &&
+			(bolusObject.mealBolus || bolusObject.mealBolus === 0)
+		) {
 			const correctionBolusNumber = parseFloat(bolusObject.correctionBolus);
 			const mealBolusNumber = parseFloat(bolusObject.mealBolus);
 

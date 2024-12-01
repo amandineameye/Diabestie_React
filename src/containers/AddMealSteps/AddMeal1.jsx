@@ -168,7 +168,7 @@ const AddMeal1 = ({ onClickNext = () => {} }) => {
 
 	const contentDivClassName = clsx(
 		style.contentDiv,
-		carbCards.length > 0 && style.contentDivWithCards
+		carbCards.length === 0 && style.contentDivWithoutCards
 	);
 
 	//Stores all the carbs objects from Redux
@@ -209,6 +209,7 @@ const AddMeal1 = ({ onClickNext = () => {} }) => {
 	// Whenever reduxCarbObjects changes, update carbCards state
 	useEffect(() => {
 		setCarbCards(reduxCarbObjects);
+		if (reduxCarbObjects.length === 0) setErrorMessage("");
 	}, [reduxCarbObjects]);
 
 	return (

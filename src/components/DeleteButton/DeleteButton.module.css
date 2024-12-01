@@ -2,13 +2,20 @@
 	height: 2rem;
 	width: 2rem;
 
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
 	background-color: var(--carbsLight);
 	border: none;
 	border-radius: 50%;
 
 	cursor: pointer;
 
-	font-size: 0.7rem;
+	.deleteIcon {
+		color: var(--carbsText);
+		font-size: 0.9rem;
+	}
 }
 
 .dashboardDeleteButton {
