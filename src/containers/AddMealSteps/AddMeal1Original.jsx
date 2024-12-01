@@ -10,8 +10,6 @@ import {
 } from "../../store/mealData/mealData.action.ts";
 import { checkTokenPresentAndUnexpired } from "../../tools/authTools.js";
 import { useNavigate } from "react-router-dom";
-import { Select } from "antd";
-import clsx from "clsx";
 
 const TitlesDiv = () => {
 	return (
@@ -22,74 +20,107 @@ const TitlesDiv = () => {
 	);
 };
 
+const DropDown = ({ options, onSelect = () => {} }) => {
+	const dispatch = useDispatch();
+
+	//Sends carb option to Redux
+	const handleOptionClick = (carbObject) => {
+		dispatch(carbAdd(carbObject)); //Sends carb
+		onSelect(); //Resets SearchBar
+	};
+
+	return (
+		<div>
+			{options.map((carbObject, index) => {
+				return (
+					<p
+						key={index}
+						className={style.carbP}
+						onClick={() => {
+							handleOptionClick(carbObject);
+						}}
+					>
+						{carbObject.carb}
+					</p>
+				);
+			})}
+		</div>
+	);
+};
+
 const SearchBar = () => {
+	const [isFocused, setFocused] = useState(false);
 	const [inputText, setInputText] = useState("");
 	const [debouncedText, setDebouncedText] = useState("");
 	const [carbsOptions, setCarbsOptions] = useState([]);
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
 
-	//When we select something
-	const handleSelection = (value) => {
-		const selectedObject = carbsOptions.find((object) => {
-			return object.carb === value;
-		});
-		if (selectedObject) {
-			dispatch(carbAdd(selectedObject));
-			setInputText("");
-			setCarbsOptions([]);
-		}
+	//Event prop callback when a option is selected
+	const resetSearchBar = () => {
+		setInputText("");
+		setDebouncedText("");
+		setCarbsOptions([]);
 	};
 
-	// Debounce input changes
+	const handleInputChange = (e) => {
+		setInputText(e.target.value);
+	};
+
+	//Set focus to true for placeholder
+	const handleFocus = () => {
+		setFocused(true);
+	};
+
+	//Set focus to false for placeholder
+	const handleBlur = () => {
+		setFocused(false);
+	};
+
+	//Set debounced text value to input text value every 300ms
 	useEffect(() => {
-		const debouncer = setTimeout(() => {
+		const handler = setTimeout(() => {
 			setDebouncedText(inputText);
 		}, 300);
-		return () => clearTimeout(debouncer);
+
+		return () => {
+			clearTimeout(handler);
+		};
 	}, [inputText]);
 
-	// Fetch options based on debounced input
+	//Use debounced text value to fetch matching db carbs and store them in carbsOptions (that will be sent to DropDown options prop)
 	useEffect(() => {
-		if (!debouncedText) {
+		if (debouncedText === "") {
 			setCarbsOptions([]);
-			return;
+			return; // Exit early if input is empty
 		}
 
-		const fetchCarbs = async () => {
+		const searchCarbs = async () => {
 			try {
-				if (!checkTokenPresentAndUnexpired()) {
-					navigate("/login");
-					return;
-				}
+				const isTokenValid = checkTokenPresentAndUnexpired();
+				if (!isTokenValid) navigate("/login");
 				const response = await postAndFetchCarbsOptions(debouncedText);
-				console.log(response.data.matchingCarbs);
 				setCarbsOptions(response.data.matchingCarbs);
 			} catch (error) {
-				console.error(error);
+				console.log(error);
 			}
 		};
-
-		fetchCarbs();
-	}, [debouncedText, navigate]);
+		searchCarbs();
+	}, [debouncedText]);
 
 	return (
-		<Select
-			className={style.newSelect}
-			showSearch
-			allowClear
-			searchValue={inputText}
-			value={null}
-			placeholder="Type and select a carb"
-			optionFilterProp="label"
-			onChange={handleSelection}
-			onSearch={setInputText}
-			filterOption={false}
-			notFoundContent="No carb matching text"
-			options={carbsOptions.map((carbsObject) => {
-				return { value: carbsObject.carb, label: carbsObject.carb };
-			})}
-		/>
+		<div className={style.searchBarDiv}>
+			<span>🔎</span>
+			<input
+				type="text"
+				onFocus={handleFocus}
+				onBlur={handleBlur}
+				placeholder={isFocused ? "" : "Type and select a carb"}
+				value={inputText}
+				onChange={handleInputChange}
+				className={carbsOptions.length && style.withOptions}
+			></input>
+			<DropDown options={carbsOptions} onSelect={resetSearchBar} />
+		</div>
 	);
 };
 
@@ -166,11 +197,6 @@ const AddMeal1 = ({ onClickNext = () => {} }) => {
 	const [carbCards, setCarbCards] = useState([]);
 	const [errorMessage, setErrorMessage] = useState(null);
 
-	const contentDivClassName = clsx(
-		style.contentDiv,
-		carbCards.length > 0 && style.contentDivWithCards
-	);
-
 	//Stores all the carbs objects from Redux
 	const reduxCarbObjects = useSelector((state) => {
 		return state.mealData.carbsData;
@@ -212,7 +238,7 @@ const AddMeal1 = ({ onClickNext = () => {} }) => {
 	}, [reduxCarbObjects]);
 
 	return (
-		<div className={contentDivClassName}>
+		<div className={style.contentDiv}>
 			<TitlesDiv />
 			<SearchBar />
 			<ResultsDiv cards={carbCards} onError={handleError} />

@@ -24,6 +24,11 @@
 		}
 	}
 
+	.newSelect {
+		width: 13rem;
+		height: 2.5rem;
+	}
+
 	.searchBarDiv {
 		background-color: white;
 		border-radius: 30px;
