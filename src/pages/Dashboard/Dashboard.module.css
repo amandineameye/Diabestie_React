@@ -25,6 +25,10 @@
 	.incompleteMeals {
 		grid-column: 1;
 		grid-row: 1;
+
+		h2 {
+			margin-bottom: 0.7rem;
+		}
 	}
 
 	.note {
@@ -75,9 +79,10 @@
 			gap: var(--spacer);
 
 			> * {
-				border: dotted var(--lighterFont) 0.1ch;
-				border-radius: 1em;
+				border: solid var(--boxesStroke) 0.1ch;
+				border-radius: 1rem;
 				padding: calc(var(--spacer) / 2);
+				background-color: var(--inputBackground);
 			}
 
 			.noMeals {

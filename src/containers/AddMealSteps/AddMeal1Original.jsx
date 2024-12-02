@@ -139,7 +139,7 @@ const NewCarbCard = ({ carb, id, carbsGrams, onError = () => {} }) => {
 		const quantity = Number(localQuantity.trim());
 
 		if (isNaN(quantity) || quantity <= 0) {
-			onError("Please enter a valid number of grams.");
+			onError("Please enter a valid number of grams");
 			return;
 		}
 
@@ -210,7 +210,7 @@ const AddMeal1 = ({ onClickNext = () => {} }) => {
 	//Handles click event of next button (sets errors or move to next page)
 	const handleButtonClick = () => {
 		if (!carbCards.length) {
-			setErrorMessage("Please select at least one carb.");
+			setErrorMessage("Please select at least one carb");
 			return;
 		}
 
@@ -220,7 +220,7 @@ const AddMeal1 = ({ onClickNext = () => {} }) => {
 		});
 
 		if (hasMissingQuantities) {
-			setErrorMessage("Please enter a valid quantity for all carbs.");
+			setErrorMessage("Please enter a valid quantity for all carbs");
 			return;
 		}
 		onClickNext();
