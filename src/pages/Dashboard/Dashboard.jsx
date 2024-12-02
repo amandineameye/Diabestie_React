@@ -71,6 +71,7 @@ const MostRecentMeals = ({ meals }) => {
 				{meals.map((meal) => {
 					return <MealBCC key={meal.id} {...meal} />;
 				})}
+				{meals.length === 0 && <p className={style.noMeals}>No meals yet</p>}
 			</div>
 		</div>
 	);

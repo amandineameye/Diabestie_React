@@ -85,14 +85,17 @@ const AddMeal2 = ({ onClickAddMeal = () => {} }) => {
 					<BolusCalcForm />
 				</div>
 
-				{similarMeals.length &&
+				{similarMeals.length ? (
 					similarMeals.map((meal, index) => {
 						return (
 							<div key={index} className={style.previousMealDiv}>
 								<MealBCC {...meal} />
 							</div>
 						);
-					})}
+					})
+				) : (
+					<div className={style.noMeals}>No meals yet</div>
+				)}
 
 				<div className={style.tagsDiv}>
 					<TagsChoice />

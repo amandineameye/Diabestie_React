@@ -48,8 +48,9 @@
 			background-color: var(--postIt);
 			border: none;
 			filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
-			font-family: "Roboto", sans-serif;
+			font-family: "Figtree", sans-serif;
 			line-height: 1.5rem;
+			margin-bottom: 1rem;
 
 			&:focus {
 				outline: none;
@@ -77,6 +78,14 @@
 				border: dotted var(--lighterFont) 0.1ch;
 				border-radius: 1em;
 				padding: calc(var(--spacer) / 2);
+			}
+
+			.noMeals {
+				border: none;
+				text-align: center;
+				color: var(--font);
+				font-size: 0.9rem;
+				font-weight: 50;
 			}
 		}
 	}

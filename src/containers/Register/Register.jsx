@@ -3,6 +3,7 @@ import style from "./Register.module.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { postRegistration } from "../../services/auth.service.js";
+import rainbow from "../../assets/rainbow.png";
 
 const Register = () => {
 	const [username, setUsername] = useState("");
@@ -18,8 +19,8 @@ const Register = () => {
 
 		try {
 			if (!password || !firstName || !username || !passwordCheck) {
-				console.log("You need to fill in every input");
-				setErrorMessage("You need to fill in every input");
+				console.log("Please fill in all fields");
+				setErrorMessage("Please fill in all fields");
 				return;
 			}
 
@@ -57,58 +58,61 @@ const Register = () => {
 
 	return (
 		<>
-			<form className={style.registerForm} onSubmit={handleSubmit}>
-				<h1>Register to continue</h1>
-				{errorMessage && <p className={style.errorMessage}>{errorMessage}</p>}
-				<div>
-					<label htmlFor="firstName">First name</label>
-					<input
-						type="text"
-						name="firstName"
-						value={firstName}
-						onChange={(e) => {
-							setFirstName(e.target.value);
-						}}
-					></input>
-				</div>
-				<div>
-					<label htmlFor="username">Username</label>
-					<input
-						type="text"
-						name="username"
-						value={username}
-						onChange={(e) => {
-							setUsername(e.target.value);
-						}}
-					></input>
-				</div>
-				<div>
-					<label htmlFor="password">Password</label>
-					<input
-						type="password"
-						name="password"
-						value={password}
-						onChange={(e) => {
-							setPassword(e.target.value);
-						}}
-					></input>
-				</div>
-				<div>
-					<label htmlFor="passwordCheck">Confirm password</label>
-					<input
-						type="password"
-						name="passwordCheck"
-						value={passwordCheck}
-						onChange={(e) => {
-							setPasswordCheck(e.target.value);
-						}}
-					></input>
-				</div>
-				<button type="submit">Register</button>
-				<p className={style.haveAnAccountP}>
-					Have an account? <Link to="/login">Log in</Link>
-				</p>
-			</form>
+			<div className={style.mainContainer}>
+				<form className={style.registerForm} onSubmit={handleSubmit}>
+					<p className={style.appName}>
+						<img src={rainbow} alt="logo" className={style.appLogo} />
+						Diabestie
+					</p>
+					<h1>Welcome</h1>
+					{errorMessage && <p className={style.errorMessage}>{errorMessage}</p>}
+					<div>
+						<input
+							type="text"
+							name="firstName"
+							placeholder="First name"
+							value={firstName}
+							onChange={(e) => {
+								setFirstName(e.target.value);
+							}}
+						></input>
+
+						<input
+							type="text"
+							name="username"
+							placeholder="Username"
+							value={username}
+							onChange={(e) => {
+								setUsername(e.target.value);
+							}}
+						></input>
+
+						<input
+							type="password"
+							name="password"
+							placeholder="Password"
+							value={password}
+							onChange={(e) => {
+								setPassword(e.target.value);
+							}}
+						></input>
+
+						<input
+							type="password"
+							name="passwordCheck"
+							placeholder="Confirm password"
+							value={passwordCheck}
+							onChange={(e) => {
+								setPasswordCheck(e.target.value);
+							}}
+						></input>
+					</div>
+					<button type="submit">Register</button>
+					<p className={style.haveAnAccountP}>
+						Have an account? <Link to="/login">Log in</Link>
+					</p>
+				</form>
+			</div>
 		</>
 	);
 };

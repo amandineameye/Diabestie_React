@@ -1,39 +1,90 @@
-.loginForm {
+.mainContainer {
+	height: 100%;
+	width: 100%;
 	display: flex;
-	flex-direction: column;
-	margin-top: 0;
-	align-items: center;
 	justify-content: center;
-	gap: 1.5rem;
+	align-items: center;
 
-	h1 {
-		margin-bottom: var(--spacer);
-	}
-
-	.errorMessage {
-		font-weight: 500;
-		margin-bottom: var(--spacer);
-	}
-
-	div {
+	.loginForm {
+		position: relative;
 		display: flex;
 		flex-direction: column;
-		gap: 0.2rem;
+		margin-top: 0;
+		align-items: center;
+		justify-content: space-evenly;
+		gap: 1.7rem;
 
-		input {
-			padding: 0.3rem;
+		background-color: var(--boxes);
+		width: 40%;
+		height: 80%;
+		padding: 5rem;
+		border-radius: 10px;
+		filter: var(--dropShadow);
+
+		.appName {
+			position: absolute;
+			top: 2rem;
+			left: 2rem;
+			display: flex;
+			font-size: 1.5rem;
+			font-weight: 400;
+			align-items: center;
+			color: var(--font);
+			gap: 1rem;
+
+			.appLogo {
+				height: 1.7rem;
+			}
 		}
-	}
 
-	button {
-		padding: 0.2rem;
-		margin-top: 0.5rem;
-	}
+		h1 {
+			font-size: 2.1rem;
+		}
 
-	.haveAnAccountP {
-		margin-top: var(--spacer);
-		a {
-			font-weight: bold;
+		.errorMessage {
+			font-weight: 500;
+			color: var(--lighterFont);
+		}
+
+		div {
+			display: flex;
+			flex-direction: column;
+			gap: 0.7rem;
+
+			input {
+				padding: 0.6rem;
+				background-color: white;
+				border: 1px solid var(--boxesStroke);
+				border-radius: 10px;
+				color: var(--font);
+				height: 2.5rem;
+			}
+		}
+
+		button {
+			height: 2.6rem;
+			width: 5rem;
+			border-radius: 10px;
+			font-size: 1.1rem;
+			background-color: var(--font);
+			color: var(--boxes);
+			outline: none;
+			border: none;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			filter: var(--dropShadow);
+		}
+
+		.haveAnAccountP {
+			color: var(--lighterFont);
+			font-size: 0.9rem;
+
+			a {
+				font-weight: bold;
+				text-decoration: underline;
+			}
 		}
 	}
 }

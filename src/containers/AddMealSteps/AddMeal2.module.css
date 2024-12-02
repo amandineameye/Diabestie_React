@@ -52,12 +52,20 @@
 			grid-row-start: 4;
 			grid-row-end: 5;
 		}
+
+		.noMeals {
+			grid-row-start: 1;
+			grid-row-end: 4;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: var(--font);
+		}
 	}
 
 	.addMealButton {
 		height: 2.6rem;
 		width: 7rem;
-		border-radius: 30px;
 		font-size: 1.1rem;
 		background-color: var(--font);
 		color: var(--boxes);
@@ -67,5 +75,6 @@
 		justify-content: center;
 		align-items: center;
 		cursor: pointer;
+		filter: var(--dropShadow);
 	}
 }

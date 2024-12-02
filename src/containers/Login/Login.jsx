@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { postCredentials } from "../../services/auth.service";
+import rainbow from "../../assets/rainbow.png";
 
 const Login = () => {
 	const [username, setUsername] = useState("");
@@ -16,6 +17,7 @@ const Login = () => {
 
 		try {
 			if (!username || !password) {
+				setErrorMessage("Please fill in both fields");
 				console.log("Please fill in both fields.");
 				return;
 			}
@@ -44,36 +46,40 @@ const Login = () => {
 
 	return (
 		<>
-			<form className={style.loginForm} onSubmit={handleSubmit}>
-				<h1>Log in to continue</h1>
-				{errorMessage && <p className={style.errorMessage}>{errorMessage}</p>}
-				<div>
-					<label htmlFor="username">Username</label>
-					<input
-						type="text"
-						name="username"
-						value={username}
-						onChange={(e) => {
-							setUsername(e.target.value);
-						}}
-					></input>
-				</div>
-				<div>
-					<label htmlFor="password">Password</label>
-					<input
-						type="password"
-						name="password"
-						value={password}
-						onChange={(e) => {
-							setPassword(e.target.value);
-						}}
-					></input>
-				</div>
-				<button type="submit">Login</button>
-				<p className={style.haveAnAccountP}>
-					Don't have an account yet? <Link to="/register">Register</Link>
-				</p>
-			</form>
+			<div className={style.mainContainer}>
+				<form className={style.loginForm} onSubmit={handleSubmit}>
+					<p className={style.appName}>
+						<img src={rainbow} alt="logo" className={style.appLogo} />
+						Diabestie
+					</p>
+					<h1>Welcome back</h1>
+					{errorMessage && <p className={style.errorMessage}>{errorMessage}</p>}
+					<div>
+						<input
+							type="text"
+							name="username"
+							value={username}
+							placeholder="Username"
+							onChange={(e) => {
+								setUsername(e.target.value);
+							}}
+						></input>
+						<input
+							type="password"
+							name="password"
+							value={password}
+							placeholder="Password"
+							onChange={(e) => {
+								setPassword(e.target.value);
+							}}
+						></input>
+					</div>
+					<button type="submit">Login</button>
+					<p className={style.haveAnAccountP}>
+						No account yet? <Link to="/register">Register</Link>
+					</p>
+				</form>
+			</div>
 		</>
 	);
 };

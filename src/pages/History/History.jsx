@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getFilteredMeals } from "../../services/history.service.js";
 import { checkTokenPresentAndUnexpired } from "../../tools/authTools.js";
+import clsx from "clsx";
 
 const SelectsDiv = ({ onFilterChange = () => {} }) => {
 	const handleSelectChange = (e) => {
@@ -70,9 +71,14 @@ const MealsDiv = ({
 		fetchMeals();
 	}, [page, unitsTarget, gramsTarget, tag]);
 
+	const mealsDivClassName = clsx(
+		style.mealsDiv,
+		meals.length === 0 && style.mealsDivWithoutMeals
+	);
+
 	return (
-		<div className={style.mealsDiv}>
-			{meals &&
+		<div className={mealsDivClassName}>
+			{meals.length ? (
 				meals.map((meal, index) => {
 					return (
 						<MealBCC
@@ -81,7 +87,10 @@ const MealsDiv = ({
 							className={`style.row${index + 1}`}
 						/>
 					);
-				})}
+				})
+			) : (
+				<div className={style.noMeals}>No meals yet</div>
+			)}
 		</div>
 	);
 };

@@ -47,6 +47,12 @@
 		grid-template-rows: 1fr 1fr 1fr;
 		gap: var(--spacer);
 
+		&.mealsDivWithoutMeals {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
 		.row1 {
 			grid-column: 1;
 			grid-row: 1;
@@ -71,6 +77,10 @@
 			grid-column: 2;
 			grid-row: 3;
 		}
+
+		.noMeals {
+			margin: auto;
+		}
 	}
 
 	.buttonsDiv {
@@ -79,7 +89,6 @@
 		button {
 			height: 2.6rem;
 			width: 7rem;
-			border-radius: 30px;
 			font-size: 1.1rem;
 			background-color: var(--font);
 			color: var(--boxes);
