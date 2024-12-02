@@ -6,6 +6,9 @@ import CookieIcon from "@mui/icons-material/Cookie";
 import CookieOutlinedIcon from "@mui/icons-material/CookieOutlined";
 import FreeBreakfastIcon from "@mui/icons-material/FreeBreakfast";
 import FreeBreakfastOutlinedIcon from "@mui/icons-material/FreeBreakfastOutlined";
+import breakfast from "../../assets/oatmeal.png";
+import donut from "../../assets/donut.png";
+import heartBeat from "../../assets/heart.png";
 
 const MealBCC = ({
 	carbsGrams,
@@ -41,17 +44,24 @@ const MealBCC = ({
 				<div className={style.tagsDiv}>
 					{firstMeal && (
 						<div>
-							<FreeBreakfastOutlinedIcon className={style.icon} />
+							{/* <FreeBreakfastOutlinedIcon className={style.icon} /> */}
+							<img src={breakfast} alt="first meal tag" />
 						</div>
 					)}
 					{snack && (
 						<div>
-							<CookieOutlinedIcon className={style.icon} />
+							{/* <CookieOutlinedIcon className={style.icon} /> */}
+							<img src={donut} alt="snack tag" />
 						</div>
 					)}
 					{wasActive && (
 						<div>
-							<DirectionsRunIcon className={style.icon} />
+							{/* <DirectionsRunIcon className={style.icon} /> */}
+							<img
+								src={heartBeat}
+								className={style.heartIcon}
+								alt="physical activity tag"
+							/>
 						</div>
 					)}
 				</div>

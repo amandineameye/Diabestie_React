@@ -56,6 +56,7 @@
 					background-color: var(--bolusLight);
 					border-color: var(--bolusText);
 					color: var(--bolusText);
+					font-weight: 500;
 				}
 			}
 		}

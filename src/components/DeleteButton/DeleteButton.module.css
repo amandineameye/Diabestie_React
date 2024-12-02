@@ -16,6 +16,10 @@
 		color: var(--carbsText);
 		font-size: 0.9rem;
 	}
+
+	img {
+		height: 0.9rem;
+	}
 }
 
 .dashboardDeleteButton {

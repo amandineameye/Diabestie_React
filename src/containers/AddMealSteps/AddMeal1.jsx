@@ -12,6 +12,7 @@ import { checkTokenPresentAndUnexpired } from "../../tools/authTools.js";
 import { useNavigate } from "react-router-dom";
 import { Select } from "antd";
 import clsx from "clsx";
+import warning from "../../assets/warning.png";
 
 const TitlesDiv = () => {
 	return (
@@ -149,9 +150,13 @@ const NewCarbCard = ({ carb, id, carbsGrams, onError = () => {} }) => {
 	);
 };
 
-const ResultsDiv = ({ cards = [], onError = () => {} }) => {
+const ResultsDiv = ({
+	cards = [],
+	className = "style.resultsDiv",
+	onError = () => {},
+}) => {
 	return (
-		<div className={style.resultsDiv}>
+		<div className={className}>
 			{cards.map((carbObject) => {
 				return (
 					<NewCarbCard key={carbObject.id} {...carbObject} onError={onError} />
@@ -169,6 +174,12 @@ const AddMeal1 = ({ onClickNext = () => {} }) => {
 	const contentDivClassName = clsx(
 		style.contentDiv,
 		carbCards.length === 0 && style.contentDivWithoutCards
+	);
+
+	const resultsDivClassName = clsx(
+		style.resultsDiv,
+		carbCards.length === 1 && style.resultsDivSingle,
+		carbCards.length === 2 && style.resultsDivDouble
 	);
 
 	//Stores all the carbs objects from Redux
@@ -216,13 +227,17 @@ const AddMeal1 = ({ onClickNext = () => {} }) => {
 		<div className={contentDivClassName}>
 			<TitlesDiv />
 			<SearchBar />
-			<ResultsDiv cards={carbCards} onError={handleError} />
+			<ResultsDiv
+				cards={carbCards}
+				className={resultsDivClassName}
+				onError={handleError}
+			/>
 			<button className={style.nextButton} onClick={handleButtonClick}>
 				Next
 			</button>
 			{errorMessage && (
 				<p className={style.errorMessage}>
-					<span>⚠️</span>
+					<img src={warning} alt="warning" />
 					{errorMessage}
 				</p>
 			)}

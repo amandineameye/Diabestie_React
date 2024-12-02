@@ -13,6 +13,7 @@ import {
 } from "../../services/dashboard.service.js";
 
 const QuickNote = () => {
+	const navigate = useNavigate();
 	const [note, setNote] = useState("");
 	const [isLoading, setLoading] = useState(false);
 

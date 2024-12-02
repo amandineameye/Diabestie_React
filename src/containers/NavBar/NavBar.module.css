@@ -16,8 +16,10 @@ nav {
 		margin-right: 3.5rem;
 
 		.logoIcon {
-			height: 1.5rem;
-			margin-right: 0.7rem;
+			/* font-size: 1.6rem; */
+			margin-right: 0.9rem;
+			color: var(--navbarItem);
+			height: 2.1rem;
 		}
 	}
 
@@ -68,6 +70,7 @@ nav {
 		align-items: center;
 		padding: 1.5rem;
 		font-size: 1rem;
+		color: var(--lighterFont);
 
 		.logOutIcon {
 			height: 1.2rem;

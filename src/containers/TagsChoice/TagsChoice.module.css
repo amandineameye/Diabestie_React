@@ -41,6 +41,15 @@
 				border: 2px solid var(--font);
 				background-color: var(--background);
 			}
+
+			img {
+				height: 2rem;
+
+				&.heartIcon {
+					margin-top: 0.3rem;
+					margin-left: 0.07rem;
+				}
+			}
 		}
 	}
 }

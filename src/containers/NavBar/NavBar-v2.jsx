@@ -1,5 +1,7 @@
 import style from "./NavBar.module.css";
 import logo from "../../assets/blood.png";
+import rainbow from "../../assets/rainbow.png";
+import rainbow2 from "../../assets/rainbow2.png";
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +16,9 @@ import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import PersonIcon from "@mui/icons-material/Person";
 import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
+import CloudIcon from "@mui/icons-material/Cloud";
+import LooksIcon from "@mui/icons-material/Looks";
+import off from "../../assets/exit.png";
 
 const LinkList = () => {
 	const iconsSize = "1.2rem";
@@ -74,14 +79,21 @@ const NavBar = () => {
 	return (
 		<nav>
 			<p className={style.navTitle}>
-				<img src={logo} alt="logo" className={style.logoIcon} />
+				<img src={rainbow} alt="logo" className={style.logoIcon} />
+				{/* <LooksIcon className={style.logoIcon} /> */}
 				Diabestie
 			</p>
 			<LinkList />
 			<p className={style.account}>
 				<PersonIcon className={style.userIcon} />
 				{username}
-				<ExitToAppOutlinedIcon
+				{/* <ExitToAppOutlinedIcon
+					
+					className={style.logOutIcon}
+				/> */}
+				<img
+					src={off}
+					alt="log out icon"
 					onClick={handleLogOutClick}
 					className={style.logOutIcon}
 				/>

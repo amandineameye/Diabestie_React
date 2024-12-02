@@ -2,8 +2,16 @@
 	display: flex;
 	justify-content: center;
 
-	.icon {
+	/* .icon {
 		font-size: 1.1rem;
+	} */
+
+	img {
+		height: 1rem;
+
+		&.heartIcon {
+			margin-top: 3px;
+		}
 	}
 
 	.cell {
@@ -27,6 +35,7 @@
 			justify-content: center;
 
 			border-radius: 50%;
+			font-weight: 500;
 
 			&.bolus {
 				background-color: var(--bolusLight);
@@ -69,8 +78,8 @@
 		right: -1rem;
 
 		div {
-			height: 1.7rem;
-			width: 1.7rem;
+			height: 2rem;
+			width: 2rem;
 			background-color: var(--boxes);
 			border-radius: 50%;
 			display: flex;
