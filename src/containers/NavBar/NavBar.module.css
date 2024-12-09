@@ -16,7 +16,6 @@ nav {
 		margin-right: 3.5rem;
 
 		.logoIcon {
-			/* font-size: 1.6rem; */
 			margin-right: 0.9rem;
 			color: var(--navbarItem);
 			height: 2rem;
@@ -34,28 +33,23 @@ nav {
 		li {
 			display: flex;
 			align-items: end;
-		}
 
-		a {
-			span {
+			a {
 				display: flex;
 				align-items: center;
-				justify-content: center;
-			}
-			display: flex;
-			align-items: center;
-			gap: 0.7rem;
-			padding: 1.2rem 1.5rem;
-			width: 100%;
-			border-radius: 1rem;
+				gap: 0.7rem;
+				padding: 1.2rem 1.5rem;
+				width: 100%;
+				border-radius: 1rem;
 
-			&:hover {
-				background-color: var(--navbarItemHover);
-			}
+				&:hover {
+					background-color: var(--navbarItemHover);
+				}
 
-			&.active {
-				color: var(--boxes);
-				background-color: var(--navbarItem);
+				&.active {
+					color: var(--boxes);
+					background-color: var(--navbarItem);
+				}
 			}
 		}
 	}
@@ -72,14 +66,14 @@ nav {
 		font-size: 1rem;
 		color: var(--lighterFont);
 
+		.userIcon {
+			margin-right: 0.9rem;
+		}
+
 		.logOutIcon {
 			height: 1.2rem;
 			margin-left: 1rem;
 			cursor: pointer;
-		}
-
-		.userIcon {
-			margin-right: 0.9rem;
 		}
 	}
 }
