@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:8000/general/";
+const baseUrl = "https://diabestie-api.vercel.app/general/";
 
 type NamesObject = {
 	firstName: string;

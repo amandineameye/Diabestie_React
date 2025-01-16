@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:8000/auth/";
+const baseUrl = "https://diabestie-api.vercel.app/auth/";
 
 export const postCredentials = async (username, password) => {
 	try {

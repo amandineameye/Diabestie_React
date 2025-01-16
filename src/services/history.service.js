@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:8000/history/";
+const baseUrl = "https://diabestie-api.vercel.app/history/";
 
 const putTokenInHeaders = () => {
 	const token = localStorage.getItem("authToken");
