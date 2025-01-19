@@ -1,8 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://diabestie-api.vercel.app/addMeal1/"
-
-
+const baseUrl = "https://diabestie-node.vercel.app/addMeal1/";
 
 export const postAndFetchCarbsOptions = async (inputText) => {
 	try {
