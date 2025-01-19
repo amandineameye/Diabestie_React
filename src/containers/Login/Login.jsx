@@ -29,6 +29,12 @@ const Login = () => {
 				return;
 			}
 
+			if (response && !response.data.token) {
+				console.log(response);
+				setErrorMessage("Internal error");
+				return;
+			}
+
 			if (!response || !response.data) {
 				console.log("One of the credentials is wrong");
 				setErrorMessage("One of the credentials is wrong");
