@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const apiURL = "https://diabestie-node.vercel.app/general";
-const baseURL = process.env.VITE_API_URL + '/general';
+const baseURL = "https://diabestie-node.vercel.app/general";
+const apiURL = process.env.VITE_API_URL + '/general';
 
 
 type NamesObject = {
@@ -18,7 +18,7 @@ export const fetchUserNames = async (): Promise<NamesObject> => {
 			authorization: `Bearer ${token}`,
 		},
 	};
-	const response = await axios.get(baseURL + "/getUserNames", headers);
+	const response = await axios.get(apiURL + "/getUserNames", headers);
 	const data = response.data;
 	return data as NamesObject;
 };
