@@ -43,6 +43,24 @@ Diabestie is designed to streamline insulin management through two key functions
 
 📝 **Quick Dashboard Notes** – Add a temporary note to the dashboard when you’re short on time to log a full meal entry.
 
+## 📸 Screenshots
+
+### 1. **Dashboard View**
+
+![Dashboard Screenshot](https://github.com/amandineameye/Diabestie_React/blob/main/src/assets/readmeScreenshots/Demo1.png?raw=true)
+
+### 2. **Entering Ingredients Data**
+
+![Entering Ingredients Data Screenshot](https://github.com/amandineameye/Diabestie_React/blob/main/src/assets/readmeScreenshots/Demo2.png?raw=true)
+
+### 3. **Insulin Decision Page**
+
+![Insulin Decision Page Screenshot](https://github.com/amandineameye/Diabestie_React/blob/main/src/assets/readmeScreenshots/Demo3.png?raw=true)
+
+### 4. **History Page**
+
+![History Page Screenshot](https://github.com/amandineameye/Diabestie_React/blob/main/src/assets/readmeScreenshots/Demo4.png?raw=true)
+
 ---
 
 ## 🎮 Demo
