@@ -2,7 +2,8 @@
 
 **Note:** This project is split into two repos—one for the frontend and one for the backend. Both need to be set up and run separately but work together seamlessly.
 
-Diabestie is a web app designed to help diabetics accurately estimate their insulin needs before a meal. Built by diabetics for diabetics.
+Diabestie is a web app designed to help diabetics accurately estimate their insulin needs before a meal.
+Built by diabetics for diabetics.
 
 ## 🧠 Vision
 
@@ -24,7 +25,7 @@ Diabestie is designed to streamline insulin management through two key functions
 
 2. **Data-Driven Decision Support** – Get relevant insights from past meals to guide your insulin decisions.
 
-## 🔹 How It Works
+## ⚙️ How It Works
 
 🍽 **Log Your Meal** – Enter the weight of each ingredient (e.g., 10g of banana, 100g of rice), and the app calculates the total carbohydrate content.
 
