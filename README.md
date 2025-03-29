@@ -1,6 +1,6 @@
 # Diabestie 🌈
 
-**Note:** This project is split into two repos—one for the [frontend](https://github.com/amandineameye/Diabestie_React) and one for the [backend](https://github.com/amandineameye/Diabestie_Node). Both need to be set up and run separately but work together seamlessly. You are currently on the frontend repo.
+**Note:** This project is split into two repos—one for the [frontend](https://github.com/amandineameye/Diabestie_React) and one for the [backend](https://github.com/amandineameye/Diabestie_Node). Both need to be set up and run separately but work together seamlessly. You are currently on the backend repo.
 
 Diabestie is a web app designed to help diabetics accurately estimate their insulin needs before a meal.
 Built by diabetics for diabetics.
@@ -96,8 +96,7 @@ If you haven’t installed it yet, you can get it from the [official Node.js web
 
 ## 🚀 Frontend Setup
 
-1. Clone the frontend repository:  
-   [Diabestie Frontend](https://github.com/amandineameye/Diabestie_React.git)
+1. Clone the frontend repository: [Diabestie Frontend](https://github.com/amandineameye/Diabestie_React.git)
 
 2. Create a `.env` file in the frontend directory with the following content:
 
@@ -116,8 +115,7 @@ npm run dev
 
 ## 🔧 Backend Setup
 
-1. Clone the backend repository:  
-   [Diabestie Backend](https://github.com/amandineameye/Diabestie_Node.git)
+1. Clone the backend repository: [Diabestie Backend](https://github.com/amandineameye/Diabestie_Node.git)
 
 2. Create a `.env` file in the backend directory with the following content:
 
@@ -138,10 +136,9 @@ npm install
 npm run dev
 ```
 
-**Note:** At the root of the backend repository, you will find a **`diabestieDB.usersData.json`** file, providing an example of how the data is structured in the database.
+**Note:** In the data folder of the backend repository, you will find a **`diabestieDB.usersData.json`** file and a **`diabestieDB.carbsRates.json`**, providing an example of how the data is structured in the database.
 
-You can view the example file directly on GitHub here:  
-[diabestieDB.usersData.json](https://github.com/amandineameye/Diabestie_Node/blob/main/diabestieDB.usersData.json)
+You can view the folder directly on GitHub here: [Data folder](https://github.com/amandineameye/Diabestie_Node/blob/main/data)
 
 ---
 
