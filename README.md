@@ -159,18 +159,18 @@ MONGODB_CONNECTION_STRING=mongodb://localhost:27017
 
 ## 🔮 Future Improvements
 
-- 📱 **Mobile Version:**
-  - The app is not yet optimized for mobile. A fully responsive version is planned for future development.
-- 🔄 **Loading Data:**
-  - Improve the data loading process to ensure all necessary information is available before the page loads, avoiding delays or visual glitches.
-- 🧑‍💻 **User Interface Clarifications:**
-  - Add tooltips or info icons for clearer explanations of sections like "Quick Note" to enhance user understanding.
-- 📝 **Meal Input Flow (Carb Table):**
-  - Relocate the carb calculation table to make the decision page cleaner and less cluttered, while allowing users to access the table when needed.
-- 🧑‍🍳 **Ingredient Adjustment:**
-  - Allow users to modify ingredient inputs while seeing an updated total carb count in real-time for more flexibility during meal entry.
-- 📈 **Graphs page (Under Construction):**
+- **Mobile Version:**
+  The app is not yet optimized for mobile. A fully responsive version is planned for future development.
+- **Loading Data:**
+  Improve the data loading process to ensure all necessary information is available before the page loads, avoiding delays or visual glitches.
+- **User Interface Clarifications:**
+  Add tooltips or info icons for clearer explanations of sections like "Quick Note" to enhance user understanding.
+- **Meal Input Flow (Carb Table):**
+  Relocate the carb calculation table to make the decision page cleaner and less cluttered, while allowing users to access the table when needed.
+- **Ingredient Adjustment:**
+  Allow users to modify ingredient inputs while seeing an updated total carb count in real-time for more flexibility during meal entry.
+- **Graphs page (Under Construction):**
   - Add a placeholder page for the "Graphs" section.
   - Develop a page that estimates the carbohydrate-to-insulin ratio (carbs per 1 unit of insulin) and the blood sugar reduction per 1 unit of insulin in different contexts.
-- 🌐 **Carb Rates API Integration:**
-  - Currently, carb rates (percentage of carbs in different ingredients) are hardcoded in the database. An improvement would be to find a reliable, free API to dynamically fetch these values, making the app more flexible and easier to maintain.
+- **Carb Rates API Integration:**
+  Currently, carb rates (percentage of carbs in different ingredients) are hardcoded in the database. An improvement would be to find a reliable, free API to dynamically fetch these values, making the app more flexible and easier to maintain.
