@@ -25,7 +25,7 @@ Diabestie is designed to streamline insulin management through two key functions
 
 2. **Data-Driven Decision Support** – Get relevant insights from past meals to guide your insulin decisions.
 
-## ⚙️ How It Works
+## 🔍 How It Works
 
 - **Log Your Meal** – Enter the weight of each ingredient (e.g., 10g of banana, 100g of rice), and the app calculates the total carbohydrate content.
 
