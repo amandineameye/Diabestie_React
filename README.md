@@ -96,7 +96,7 @@ Diabestie uses **JWT (JSON Web Tokens)** for secure user authentication. After l
 Ensure you have **Node.js** (v23.7.0 or a compatible version) installed on your machine.
 If you haven’t installed it yet, you can get it from the [official Node.js website](https://nodejs.org/en/download).
 
-## 🏗️ Frontend Setup
+## Frontend Setup
 
 1. Clone the frontend repository: [Diabestie Frontend](https://github.com/amandineameye/Diabestie_React.git)
 
@@ -113,7 +113,7 @@ npm install
 npm run dev
 ```
 
-## ⚙️ Backend Setup
+## Backend Setup
 
 1. Clone the backend repository: [Diabestie Backend](https://github.com/amandineameye/Diabestie_Node.git)
 
@@ -140,7 +140,7 @@ npm run dev
 
 You can view the folder directly on GitHub here: [Data folder](https://github.com/amandineameye/Diabestie_Node/blob/main/data)
 
-## 🗄 Database Setup
+## Database Setup
 
 ### Option 1: Using MongoDB Atlas (Cloud)
 
