@@ -22,7 +22,6 @@ Diabestie simplifies this process by helping users **track**, **analyze**, and *
 Diabestie is designed to streamline insulin management through two key functions:
 
 1. **Accurate Meal Tracking** – Keep a detailed record of meals, insulin doses, and key influencing factors.
-
 2. **Data-Driven Decision Support** – Get relevant insights from past meals to guide your insulin decisions.
 
 ## 🔍 How It Works
