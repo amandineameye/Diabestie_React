@@ -28,12 +28,19 @@ Diabestie is designed to streamline insulin management through two key functions
 ## ⚙️ How It Works
 
 - **Log Your Meal** – Enter the weight of each ingredient (e.g., 10g of banana, 100g of rice), and the app calculates the total carbohydrate content.
+
 - **Compare with Past Meals** – Instantly access data from similar past meals, including physical activity, time of day, and blood sugar trends.
+
 - **Input Key Factors** – Add your current blood sugar level, correction insulin, and other relevant details.
+
 - **Make an Informed Decision** – With all essential data at a glance, confidently estimate the right insulin dose.
+
 - **Track Post-Meal Glucose** – Return after three hours to log your updated blood sugar level, improving future insights.
+
 - **Review Your Meal History** – Access detailed records of past meals, insulin doses, carb intake, and trends over time.
+
 - **Filter Your History** – Quickly find specific meals based on factors like time of day, physical activity, or carb content.
+
 - **Quick Dashboard Notes** – Add a temporary note to the dashboard when you’re short on time to log a full meal entry.
 
 ---
