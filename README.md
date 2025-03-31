@@ -93,15 +93,8 @@ Diabestie uses **JWT (JSON Web Tokens)** for secure user authentication. After l
 
 ## 🏃‍♀️ How to Run Locally
 
-To run Diabestie locally, follow these steps.
-
-### 📌 Prerequisites
-
 Ensure you have **Node.js** (v23.7.0 or a compatible version) installed on your machine.
-
 If you haven’t installed it yet, you can get it from the [official Node.js website](https://nodejs.org/en/download).
-
----
 
 ## 🏗️ Frontend Setup
 
@@ -119,8 +112,6 @@ VITE_API_URL=http://localhost:3001
 npm install
 npm run dev
 ```
-
----
 
 ## ⚙️ Backend Setup
 
@@ -148,8 +139,6 @@ npm run dev
 **Note:** In the data folder of the backend repository, you will find a **`diabestieDB.usersData.json`** file and a **`diabestieDB.carbsRates.json`**, providing an example of how the data is structured in the database.
 
 You can view the folder directly on GitHub here: [Data folder](https://github.com/amandineameye/Diabestie_Node/blob/main/data)
-
----
 
 ## 🗄 Database Setup
 
