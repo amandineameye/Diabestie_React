@@ -57,19 +57,19 @@ Create an account or use:
 
 ## 📸 Screenshots
 
-### 1. **Dashboard View**
+### **Dashboard View**
 
 ![Dashboard Screenshot](https://github.com/amandineameye/Diabestie_React/blob/main/src/assets/readmeScreenshots/Demo1.png?raw=true)
 
-### 2. **Entering Ingredients Data**
+### **Entering Ingredients Data**
 
 ![Entering Ingredients Data Screenshot](https://github.com/amandineameye/Diabestie_React/blob/main/src/assets/readmeScreenshots/Demo2.png?raw=true)
 
-### 3. **Insulin Decision Page**
+### **Insulin Decision Page**
 
 ![Insulin Decision Page Screenshot](https://github.com/amandineameye/Diabestie_React/blob/main/src/assets/readmeScreenshots/Demo3.png?raw=true)
 
-### 4. **History Page**
+### **History Page**
 
 ![History Page Screenshot](https://github.com/amandineameye/Diabestie_React/blob/main/src/assets/readmeScreenshots/Demo4.png?raw=true)
 
