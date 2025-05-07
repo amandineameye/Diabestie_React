@@ -16,14 +16,15 @@ const GreetingsAndDate = () => {
 	}
 
 	const firstName = useSelector(
-		(state) => state.userData?.data?.firstName || ""
+		(state) => state.userData?.data?.firstName
 	);
 
 	return (
 		<div className={style.greetingsAndDate}>
-			<h1>
+			{firstName ? <h1>
 				{greetings}, <span>{firstName}</span>
-			</h1>
+			</h1> : <h1>{greetings}</h1>}
+			
 			<p>{date}</p>
 		</div>
 	);

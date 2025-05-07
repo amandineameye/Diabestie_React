@@ -37,7 +37,10 @@ const QuickNote = () => {
 	useEffect(() => {
 		const getNote = async () => {
 			const isTokenValid = checkTokenPresentAndUnexpired();
-			if (!isTokenValid) navigate("/login");
+			if (!isTokenValid) {
+				navigate("/login");
+				return
+			}
 			setLoading(true);
 			const fetchedNote = await fetchNote();
 			setNote(fetchedNote);
@@ -53,7 +56,7 @@ const QuickNote = () => {
 				name="postIt"
 				id="postIt"
 				className={style.postIt}
-				value={note}
+				value={isLoading? "Loading quick note..." : note}
 				onChange={handleChange}
 				onBlur={handleBlur}
 				disabled={isLoading}

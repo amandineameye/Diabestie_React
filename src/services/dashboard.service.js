@@ -1,10 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
 
-const baseUrl = "https://diabestie-node.vercel.app/dashboard/";
-const apiURL = import.meta.env.VITE_API_URL + "/dashboard";
+const apiURL = import.meta.env.VITE_API_URL + '/dashboard';
 
 const putTokenInHeaders = () => {
-  const token = localStorage.getItem("authToken");
+  const token = localStorage.getItem('authToken');
   return {
     headers: {
       authorization: `Bearer ${token}`,
@@ -15,7 +14,7 @@ const putTokenInHeaders = () => {
 export const fetchNote = async () => {
   try {
     const headers = putTokenInHeaders();
-    const response = await axios.get(apiURL + "/getNote", headers);
+    const response = await axios.get(apiURL + '/getNote', headers);
     return response.data.note;
   } catch (error) {
     console.log(error);
@@ -26,7 +25,7 @@ export const patchNote = async (note) => {
   try {
     const headers = putTokenInHeaders();
     const response = await axios.patch(
-      apiURL + "/updateNote",
+      apiURL + '/updateNote',
       { updatedNote: note },
       headers
     );
@@ -39,7 +38,7 @@ export const patchNote = async (note) => {
 export const fetchMealsSummary = async () => {
   try {
     const headers = putTokenInHeaders();
-    const response = await axios.get(apiURL + "/getMealsSummary", headers);
+    const response = await axios.get(apiURL + '/getMealsSummary', headers);
     return response.data.meals;
   } catch (error) {
     console.log(error);
@@ -49,7 +48,7 @@ export const fetchMealsSummary = async () => {
 export const fetchIncompleteMeals = async () => {
   try {
     const headers = putTokenInHeaders();
-    const response = await axios.get(apiURL + "/getIncompleteMeals", headers);
+    const response = await axios.get(apiURL + '/getIncompleteMeals', headers);
     return response.data.meals;
   } catch (error) {
     console.log(error);
@@ -65,7 +64,7 @@ export const patchIncompleteMeals = async (
     const headers = putTokenInHeaders();
     console.log(headers);
     const response = await axios.patch(
-      apiURL + "/updateIncompleteMeal",
+      apiURL + '/updateIncompleteMeal',
       { mealId, bloodSugarAfter, wasActiveAfter },
       headers
     );
